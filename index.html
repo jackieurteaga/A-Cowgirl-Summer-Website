@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Cowgirl Summer · Montana · September 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --navy:  #3C3028;
+      --msky:  #9B8C7E;
+      --pine:  #7D8B72;
+      --timber:#5C5048;
+      --dust:  #B8AA98;
+      --cream: #F2EDE3;
+      --cdark: #E6DFD0;
+      --gold:  #A87860;
+      --gold-light: #C49278;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--timber);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    /* ── Hero ──────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(170deg, rgba(30,18,8,0.80) 0%, rgba(40,26,12,0.72) 40%, rgba(20,12,4,0.86) 100%),
+        url('brand_assets/hero-bg.png') center 40% / cover no-repeat;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 2rem 8rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(168,120,96,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 100%, rgba(20,10,4,.4) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 600px; width: 100%; }
+    .hero-logo { margin-bottom: 2.25rem; display: flex; justify-content: center; }
+    .hero-eyebrow {
+      font-size: .68rem; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem; font-weight: 400;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5.5vw, 3.8rem);
+      font-weight: 300; color: var(--cream);
+      letter-spacing: .12em; line-height: 1.05;
+      text-transform: uppercase;
+    }
+    .hero-divider {
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(168,120,96,.55), transparent);
+      margin: 2rem auto;
+    }
+    .hero-location {
+      font-size: .74rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(242,237,227,.35); margin-bottom: .75rem;
+    }
+    .hero-event {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem; font-weight: 300; font-style: italic;
+      color: rgba(242,237,227,.48); letter-spacing: .02em;
+      margin-bottom: 3rem;
+    }
+    .hero-crew-label {
+      font-size: .58rem; letter-spacing: .26em; text-transform: uppercase;
+      color: rgba(242,237,227,.17); margin-bottom: .65rem;
+    }
+    .hero-crew-list {
+      font-size: .79rem; color: rgba(242,237,227,.27);
+      line-height: 2; max-width: 440px; margin: 0 auto; font-weight: 300;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.75rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: rgba(242,237,227,.2); font-size: .58rem; letter-spacing: .25em; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(168,120,96,.5), transparent);
+      animation: scrollPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: .25; transform: scaleY(.8) }
+      50% { opacity: .8; transform: scaleY(1) }
+    }
+
+    /* ── Explore Jump Nav ─────────────────────────────── */
+    .explore-jumps {
+      display: flex; overflow-x: auto; gap: .45rem;
+      padding: .9rem 0 1.1rem;
+      scrollbar-width: none;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(92,80,72,.1);
+    }
+    .explore-jumps::-webkit-scrollbar { display: none; }
+    .explore-jump-btn {
+      flex-shrink: 0; padding: .32rem .85rem;
+      font-size: .62rem; letter-spacing: .13em; text-transform: uppercase;
+      font-weight: 500; color: var(--timber);
+      background: transparent;
+      border: 1px solid rgba(92,80,72,.28);
+      border-radius: 50px; cursor: pointer; white-space: nowrap;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      transition: background .18s, color .18s, border-color .18s;
+    }
+    .explore-jump-btn:hover {
+      background: var(--navy); color: var(--cream); border-color: var(--navy);
+    }
+
+    /* ── Tab Nav ───────────────────────────────────────── */
+    .tab-nav-wrap { position: sticky; top: 0; z-index: 50; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .tab-nav { display: flex; overflow-x: auto; max-width: 900px; margin: 0 auto; scrollbar-width: none; }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0; padding: 1rem 1.4rem;
+      font-size: .875rem; font-weight: 500; color: rgba(245,240,232,.5);
+      border: none; border-bottom: 2px solid transparent;
+      background: none; cursor: pointer; white-space: nowrap;
+      transition: color .2s, border-color .2s;
+    }
+    .tab-btn:hover { color: rgba(245,240,232,.8); }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── Panel & Layout ────────────────────────────────── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .content-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+    /* ── Section headers ───────────────────────────────── */
+    .sec-header { margin-bottom: 1.4rem; padding-bottom: .9rem; border-bottom: 1px solid rgba(61,43,25,.12); }
+    .sec-eyebrow { font-size:.67rem; letter-spacing:.2em; text-transform:uppercase; color:var(--msky); font-weight:500; margin-bottom:.4rem; }
+    .sec-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.6rem; font-weight:400; color:var(--navy); letter-spacing:-.01em; }
+    .sec-sub { font-size:.9rem; color:var(--dust); margin-top:.3rem; line-height:1.6; }
+    .content-block { margin-bottom: 3.25rem; }
+
+    /* ── Info bar ──────────────────────────────────────── */
+    .info-bar { background:var(--navy); border-radius:10px; padding:1.2rem 1.5rem; margin-bottom:2rem; display:flex; flex-wrap:wrap; gap:1.25rem; }
+    .info-item { display:flex; flex-direction:column; gap:2px; }
+    .info-label { font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(245,240,232,.4); font-weight:500; }
+    .info-value { font-size:.9rem; font-weight:500; color:var(--cream); }
+
+    /* ── Cards ─────────────────────────────────────────── */
+    .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.2rem; }
+    .card-grid-2 { grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); }
+
+    .card {
+      background:#fff; border:1px solid rgba(184,168,152,.25); border-radius:12px; overflow:hidden;
+      transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s;
+      box-shadow:0 1px 3px rgba(61,43,25,.05),0 4px 12px rgba(61,43,25,.06);
+    }
+    .card:hover { transform:translateY(-4px); box-shadow:0 2px 6px rgba(61,43,25,.08),0 12px 32px rgba(61,43,25,.12); }
+
+    .card-img { width:100%; height:180px; position:relative; overflow:hidden; background:var(--cdark); }
+
+    .card-body { padding:1.1rem 1.25rem 1.35rem; }
+    .card-tag { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--msky); font-weight:500; margin-bottom:.4rem; }
+    .card-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.15rem; font-weight:400; color:var(--navy); margin-bottom:.35rem; line-height:1.25; }
+    .card-desc { font-size:.875rem; color:var(--dust); line-height:1.65; margin-bottom:.85rem; }
+
+    .card-meta { display:flex; flex-direction:column; gap:.3rem; margin-bottom:.85rem; }
+    .cmr { display:flex; align-items:center; gap:6px; font-size:.8125rem; color:var(--dust); }
+    .cmr strong { color:var(--timber); font-weight:500; }
+
+    .card-links { display:flex; flex-wrap:wrap; gap:8px; padding-top:.85rem; border-top:1px solid rgba(184,168,152,.2); }
+    .card-link { font-size:.8rem; font-weight:500; color:var(--msky); display:inline-flex; align-items:center; gap:4px; transition:color .2s; }
+    .card-link:hover { color:var(--navy); }
+
+    .badge { display:inline-block; font-size:.67rem; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:99px; font-weight:600; }
+    .badge-gold { background:rgba(168,120,96,.15); color:var(--gold); }
+    .badge-navy { background:rgba(60,48,40,.1); color:var(--navy); }
+    .badge-warn { background:rgba(200,80,50,.1); color:#c85032; }
+    .badge-green { background:rgba(45,100,60,.1); color:#2d643c; }
+
+    .warn-box {
+      background:rgba(168,120,96,.1); border:1px solid rgba(168,120,96,.3);
+      border-radius:8px; padding:.7rem 1rem; font-size:.8375rem;
+      color:var(--timber); margin-bottom:.85rem; line-height:1.55;
+    }
+    .warn-box strong { color:var(--navy); }
+
+    /* ── Accommodation highlight card ──────────────────── */
+    .accom-card {
+      background:#fff; border:1px solid rgba(184,168,152,.25); border-radius:14px; overflow:hidden;
+      box-shadow:0 1px 3px rgba(61,43,25,.05),0 6px 20px rgba(61,43,25,.08);
+      margin-bottom:1.2rem;
+    }
+    .accom-header { background:var(--navy); padding:1.1rem 1.5rem; display:flex; align-items:center; gap:14px; }
+    .accom-icon { width:10px; height:10px; border-radius:50%; background:rgba(168,120,96,.5); flex-shrink:0; margin-top:6px; }
+    .accom-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:400; color:var(--cream); line-height:1.2; }
+    .accom-loc { font-size:.78rem; color:rgba(245,240,232,.5); margin-top:2px; }
+    .accom-body { padding:1.25rem 1.5rem; }
+    .accom-desc { font-size:.9rem; color:var(--dust); line-height:1.7; margin-bottom:1rem; }
+    .accom-amenities { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:1rem; }
+    .amenity-tag { font-size:.75rem; padding:4px 10px; background:rgba(60,48,40,.07); border-radius:99px; color:var(--navy); font-weight:500; }
+    .accom-guests { padding:.85rem 1rem; background:rgba(168,120,96,.06); border:1px solid rgba(168,120,96,.2); border-radius:8px; }
+    .accom-guests-label { font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); font-weight:500; margin-bottom:.4rem; }
+    .guest-chips { display:flex; flex-wrap:wrap; gap:6px; }
+    .guest-chip { font-size:.8rem; padding:4px 11px; background:var(--cream); border:1px solid rgba(184,168,152,.3); border-radius:99px; color:var(--timber); }
+
+    /* ── Wedding block ──────────────────────────────────── */
+    .wedding-block {
+      background:linear-gradient(135deg,var(--navy) 0%,#4A3A2A 100%);
+      border-radius:14px; padding:2rem 1.5rem; margin-bottom:1.2rem;
+    }
+    .wedding-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.75rem; font-weight:300; color:var(--cream); letter-spacing:-.01em; margin-bottom:.4rem; }
+    .wedding-sub { font-size:.9rem; color:rgba(245,240,232,.6); margin-bottom:1.5rem; }
+    .wedding-events { display:flex; flex-direction:column; gap:.75rem; }
+    .we-item { display:flex; align-items:flex-start; gap:14px; background:rgba(255,255,255,.06); border-radius:10px; padding:1rem 1.1rem; }
+    .we-time { flex-shrink:0; width:60px; }
+    .we-time-val { font-size:1rem; font-weight:400; color:var(--gold); line-height:1; font-family:'Cormorant Garamond',Georgia,serif; }
+    .we-time-label { font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(245,240,232,.4); margin-top:2px; }
+    .we-info { flex:1; }
+    .we-name { font-size:.9375rem; font-weight:600; color:var(--cream); margin-bottom:.2rem; }
+    .we-venue { font-size:.82rem; color:rgba(245,240,232,.55); }
+    .we-emoji { display:none; }
+
+    /* ── Itinerary / timeline ───────────────────────────── */
+    .itinerary { display:flex; flex-direction:column; gap:1.2rem; }
+    .day-block { background:#fff; border:1px solid rgba(184,168,152,.22); border-radius:12px; overflow:hidden; box-shadow:0 1px 3px rgba(61,43,25,.04),0 4px 12px rgba(61,43,25,.05); }
+    .day-header { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; background:var(--navy); cursor:pointer; user-select:none; }
+    .dh-left { display:flex; align-items:center; gap:12px; }
+    .day-num { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; font-weight:300; color:var(--gold); line-height:1; }
+    .day-ttl { font-size:.9375rem; font-weight:600; color:var(--cream); line-height:1.2; }
+    .day-dt { font-size:.74rem; color:rgba(245,240,232,.48); letter-spacing:.04em; margin-top:2px; }
+    .day-chevron { color:rgba(245,240,232,.4); transition:transform .25s; flex-shrink:0; }
+    .day-block.open .day-chevron { transform:rotate(180deg); }
+    .day-body { display:none; padding:1.25rem; }
+    .day-block.open .day-body { display:block; }
+
+    .tl-items { display:flex; flex-direction:column; gap:0; }
+    .tl-item { display:flex; gap:1rem; padding:.75rem 0; border-bottom:1px solid rgba(184,168,152,.15); }
+    .tl-item:last-child { border-bottom:none; padding-bottom:0; }
+    .tl-time { flex-shrink:0; width:68px; font-size:.78rem; font-weight:600; color:var(--msky); letter-spacing:.02em; padding-top:2px; }
+    .tl-content { flex:1; }
+    .tl-title { font-size:.9375rem; font-weight:600; color:var(--navy); margin-bottom:.2rem; line-height:1.3; }
+    .tl-desc { font-size:.8375rem; color:var(--dust); line-height:1.6; }
+    .tl-opt { display:inline-block; font-size:.67rem; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; border-radius:99px; background:rgba(155,140,126,.1); color:var(--msky); font-weight:600; margin-left:5px; vertical-align:middle; }
+
+    /* ── Stats ──────────────────────────────────────────── */
+    .stats-strip {
+      background:var(--pine); border-radius:12px; padding:2rem 1.5rem; margin-bottom:3rem;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1.5rem; text-align:center;
+    }
+    .stat-num { font-family:'Cormorant Garamond',Georgia,serif; font-size:2.25rem; font-weight:300; color:var(--cream); letter-spacing:-.02em; line-height:1; }
+    .stat-num span { color:var(--gold); }
+    .stat-label { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(245,240,232,.45); margin-top:.35rem; }
+
+    /* ── Join / CTA ─────────────────────────────────────── */
+    .join-block { background:linear-gradient(135deg,var(--pine),var(--navy)); border-radius:14px; padding:2.5rem 2rem; text-align:center; margin-top:2rem; }
+    .join-block h3 { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.6rem; font-weight:300; color:var(--cream); letter-spacing:-.01em; margin-bottom:.75rem; }
+    .join-block p { font-size:.9375rem; color:rgba(245,240,232,.6); line-height:1.7; margin-bottom:1.75rem; max-width:360px; margin-left:auto; margin-right:auto; }
+    .join-form { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; max-width:420px; margin:0 auto; }
+    .join-input { flex:1; min-width:200px; padding:12px 16px; border-radius:6px; background:rgba(245,240,232,.1); border:1.5px solid rgba(245,240,232,.25); color:var(--cream); font-size:.9375rem; font-family:'DM Sans',sans-serif; transition:border-color .2s; }
+    .join-input::placeholder { color:rgba(245,240,232,.38); }
+    .join-input:focus { outline:none; border-color:var(--gold); }
+    .join-btn { padding:12px 24px; border-radius:6px; background:var(--gold); color:var(--navy); font-size:.9375rem; font-weight:600; cursor:pointer; border:none; transition:background .2s,transform .15s; }
+    .join-btn:hover { background:var(--gold-light); transform:translateY(-1px); }
+
+    /* ── Flights table ──────────────────────────────────── */
+    .flights-placeholder { background:#fff; border:1.5px dashed rgba(184,168,152,.4); border-radius:12px; padding:2rem; text-align:center; }
+    .flights-placeholder p { font-size:.9rem; color:var(--dust); line-height:1.7; }
+    .flights-placeholder strong { color:var(--navy); }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    footer { background:#221A12; padding:3rem 1.5rem 2rem; text-align:center; }
+    .ft-logo { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:400; color:var(--cream); margin-bottom:.3rem; }
+    .ft-tag { font-size:.82rem; color:rgba(245,240,232,.35); margin-bottom:1.4rem; }
+    .ft-links { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+    .ft-links a { font-size:.82rem; color:rgba(245,240,232,.35); transition:color .2s; }
+    .ft-links a:hover { color:var(--cream); }
+    .ft-copy { font-size:.78rem; color:rgba(245,240,232,.2); }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media(max-width:600px) {
+      .hero { padding:3.5rem 1.25rem 6rem; }
+      .card-grid, .card-grid-2 { grid-template-columns:1fr; }
+      .info-bar { flex-direction:column; gap:.75rem; }
+      .we-item { flex-direction:column; gap:8px; }
+    }
+    *:focus-visible { outline:2px solid var(--msky); outline-offset:3px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+
+    <!-- CS brand logo -->
+    <div class="hero-logo">
+      <img
+        src="brand_assets/brand-logo.jpg"
+        alt="A Cowgirl Summer"
+        style="
+          width: 100px;
+          height: auto;
+          filter: invert(1) hue-rotate(180deg) sepia(0.35) saturate(1.8) brightness(0.92);
+          mix-blend-mode: screen;
+        "
+      />
+    </div>
+
+    <div class="hero-eyebrow">Montana &nbsp;·&nbsp; September 2026</div>
+    <h1 class="hero-title">A Cowgirl Summer</h1>
+    <div class="hero-divider"></div>
+    <div class="hero-location">Whitefish &nbsp;·&nbsp; Glacier National Park &nbsp;·&nbsp; Bigfork</div>
+    <div class="hero-event">Brooke &amp; Dan's Wedding</div>
+    <div class="hero-crew-label">The Crew — 16</div>
+    <div class="hero-crew-list">Jackie Urteaga, Vale Giraldo, Ashley Alvarez, Carlos Ruga, Gaby Vazquez, Danny Samaei, Genesis Ramirez, Peca Yepes, Maria Piselli, Mikey Kelly, Michael Thoennes, Ty Humphrey, Sofia Arias, Manuela Sinisterra, Samantha Boettge, Zeb Boettge</div>
+
+ </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+ </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     TAB NAV
+═══════════════════════════════════════════════════ -->
+<div class="tab-nav-wrap" id="itinerary">
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('whitefish',this)">Part 1 — Whitefish (Sep 2–4)</button>
+    <button class="tab-btn"        onclick="switchTab('bigfork',this)">Part 2 — Bigfork (Sep 4–7)</button>
+    <button class="tab-btn"        onclick="switchTab('explore',this)">Explore Montana</button>
+    <button class="tab-btn"        onclick="switchTab('full',this)">Full Itinerary</button>
+  </nav>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     TAB 1 — WHITEFISH (Sep 2–4)
+═══════════════════════════════════════════════════ -->
+<div id="tab-whitefish" class="tab-panel active">
+<div class="content-wrap">
+
+  <div class="info-bar">
+    <div class="info-item"><span class="info-label">Dates</span><span class="info-value">Sep 2–4 (Wed–Fri)</span></div>
+    <div class="info-item"><span class="info-label">Location</span><span class="info-value">Whitefish, MT</span></div>
+    <div class="info-item"><span class="info-label">Staying</span><span class="info-value">Downtown Studio</span></div>
+    <div class="info-item"><span class="info-label">Guests</span><span class="info-value">Jackie + Vale</span></div>
+    <div class="info-item"><span class="info-label">Nights</span><span class="info-value">2 nights (Sep 2–4)</span></div>
+ </div>
+
+  <!-- ARRIVALS -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Wednesday · Sep 2 — Arrivals</div>
+      <div class="sec-title">Wednesday Arrivals → Whitefish</div>
+      <div class="sec-sub">Group 1 flies into Kalispell (FCA) and drives ~15 min to downtown Whitefish.</div>
+    </div>
+
+    <div class="card-grid card-grid-2" style="margin-bottom:1.25rem;">
+
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Jackie Urteaga · Confirmed</div>
+          <div class="card-title">United UA530</div>
+          <span class="badge badge-gold">Confirmed</span>
+          <div class="card-meta" style="margin-top:.75rem;">
+            <div class="cmr"><span><strong>Newark (EWR)</strong> → Chicago (ORD) → Kalispell (FCA)</span></div>
+            <div class="cmr"><span>Lands Kalispell: <strong>11:27 AM Wednesday, Sep 2</strong></span></div>
+            <div class="cmr"><span>Airline: <strong>United</strong> · Flight: <strong>UA530</strong> · Conf: <strong>JJ2783</strong></span></div>
+            <div class="cmr"><span>Drive to Whitefish: ~15 min · Arrive ~11:45 AM</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="border-color:rgba(200,80,50,.2);">
+        <div class="card-body">
+          <div class="card-tag">Vale Giraldo</div>
+          <div class="card-title">Flight TBD</div>
+          <span class="badge badge-warn">Not yet booked</span>
+          <div class="card-desc" style="margin-top:.75rem;">Vale hasn't purchased her flight yet. Once booked, arrival details will be added here.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Closest airport: <strong>Kalispell (FCA)</strong></span></div>
+            <div class="cmr"><span>FCA → Whitefish: ~15 min</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="warn-box"><strong>From Kalispell Airport (FCA):</strong> Take US-2 W into Whitefish. ~14 miles, 15–20 min. Pick up rental car at the airport — you'll need it for the Glacier hike on Thursday.</div>
+  </div>
+
+  <!-- ACCOMMODATION -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Accommodations · Sep 2–4</div>
+      <div class="sec-title">Where You're Staying</div>
+   </div>
+
+    <div class="accom-card">
+      <div class="accom-header">
+        <div class="accom-icon"></div>
+        <div>
+          <div class="accom-name">Charming Downtown Whitefish Studio — Walk Everywhere</div>
+          <div class="accom-loc">Downtown Whitefish, Montana · 1 bed · 1 bath · Up to 5 guests</div>
+       </div>
+     </div>
+      <div class="accom-body">
+        <div class="accom-desc">Stay in the heart of downtown Whitefish with easy access to skiing, Whitefish Lake, and Glacier National Park. Features a king bed, queen sofa sleeper, and twin sleeper chair — plus a modern kitchen, walk-in shower, smart TV, WiFi, and a private balcony. Assigned parking included. Park once and walk everywhere.</div>
+        <div class="accom-amenities">
+          <span class="amenity-tag">Free Parking</span>
+          <span class="amenity-tag">WiFi</span>
+          <span class="amenity-tag">Drip Coffee Maker</span>
+          <span class="amenity-tag">Smart TV</span>
+          <span class="amenity-tag">AC</span>
+          <span class="amenity-tag">Self Check-in</span>
+          <span class="amenity-tag">Private Balcony</span>
+          <span class="amenity-tag">5.0 · Guest Favorite</span>
+       </div>
+        <div class="accom-guests">
+          <div class="accom-guests-label">Who's Staying Here</div>
+          <div class="guest-chips">
+            <span class="guest-chip">Jackie Urteaga</span>
+            <span class="guest-chip">Vale Giraldo</span>
+         </div>
+       </div>
+        <div style="margin-top:1rem;">
+          <a href="https://www.airbnb.com/rooms/1599396735862886138" target="_blank" class="card-link">View on Airbnb →</a>
+       </div>
+     </div>
+   </div>
+ </div>
+
+  <!-- GLACIER HIKES -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Thursday · Sep 3</div>
+      <div class="sec-title">Glacier National Park — Hikes</div>
+      <div class="sec-sub">Jackie, Ashley, Vale + Carlos are heading to Glacier Thursday morning. Pick your level — all are jaw-dropping. Logan Pass opens ~late June, confirm road status before going.</div>
+   </div>
+
+    <div class="warn-box"><strong>Going-to-the-Sun Road:</strong> requires a timed entry permit or vehicle reservation between 6am–3pm at St. Mary or Apgar entrances. Book at <strong>recreation.gov</strong> — sells out fast.</div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Beginner–Intermediate · 2.7 mi RT</div>
+          <div class="card-title">Hidden Lake Overlook</div>
+          <span class="badge badge-gold">Most Popular</span>
+          <div class="card-desc">Short but stunning hike from Logan Pass to an overlook above an impossibly blue alpine lake. Good chance of seeing mountain goats and bighorn sheep.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Logan Pass, ~1 hr 15 min from Whitefish</span></div>
+            <div class="cmr"><span><strong>2–3 hrs total</strong> with time at the overlook</span></div>
+            <div class="cmr"><span>460 ft elevation gain · Paved + boardwalk start</span></div>
+          </div>
+          <div class="card-links"><a href="https://www.nps.gov/places/hidden-lake-trailhead.htm" target="_blank" class="card-link">Trail Info →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Moderate · 11.4 mi one way</div>
+          <div class="card-title">Highline Trail</div>
+          <span class="badge badge-navy">Iconic</span>
+          <div class="card-desc">The crown jewel of Glacier. Traverses the Continental Divide with sweeping views the whole way. Start at Logan Pass, end at The Loop (shuttle back). Don't skip this.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Logan Pass → The Loop trailhead</span></div>
+            <div class="cmr"><span><strong>5–7 hrs</strong> · Start early for parking</span></div>
+            <div class="cmr"><span>Free Glacier shuttle back to Logan Pass</span></div>
+          </div>
+          <div class="warn-box" style="margin-top:.85rem;">Ledge section at start is narrow. Worth every step.</div>
+          <div class="card-links"><a href="https://www.nps.gov/places/highline-trailhead.htm" target="_blank" class="card-link">Trail Info →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Easy · 4.5 mi RT</div>
+          <div class="card-title">Avalanche Lake</div>
+          <span class="badge badge-green">Great for groups</span>
+          <div class="card-desc">A forest trail through old-growth cedar to a gorgeous glacial lake ringed by waterfalls. Easier on the legs — a great choice if the Highline feels like too much.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Avalanche Creek trailhead · ~50 min from Whitefish</span></div>
+            <div class="cmr"><span><strong>2–3 hrs</strong> · minimal elevation gain</span></div>
+            <div class="cmr"><span>No vehicle reservation needed for this trailhead</span></div>
+          </div>
+          <div class="card-links"><a href="https://www.nps.gov/places/avalanche-lake-trail.htm" target="_blank" class="card-link">Trail Info →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Moderate · 9.6 mi RT · Flexible Turn-Back</div>
+          <div class="card-title">Iceberg Lake</div>
+          <span class="badge badge-gold">Best Turquoise Water</span>
+          <div class="card-desc">One of Glacier's most jaw-dropping destinations — a high alpine lake famous for its vivid turquoise color and floating icebergs even in September. The trail is surprisingly gradual (1,200 ft gain over 4.8 mi). Can turn back at the cirque opening for a shorter version — still spectacular views of the cliffs and peaks.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Many Glacier area · ~1 hr 20 min from Whitefish</span></div>
+            <div class="cmr"><span><strong>4–5 hrs full loop</strong> · shorter if you turn back early</span></div>
+            <div class="cmr"><span>1,275 ft elevation gain · gradual climb</span></div>
+          </div>
+          <div class="card-links"><a href="https://www.nps.gov/places/iceberg-lake-trailhead.htm" target="_blank" class="card-link">Trail Info →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Easy–Moderate · Choose Your Distance</div>
+          <div class="card-title">Gunsight Lake / Florence Falls</div>
+          <span class="badge badge-green">Go At Your Own Pace</span>
+          <div class="card-desc">A choose-your-own-adventure trail off the Going-to-the-Sun Road. Hike 4 miles to Florence Falls for a quick and rewarding waterfall stop, or continue to stunning glacier-fed Gunsight Lake at mile 6 — brilliant turquoise water at the base of dramatic peaks. Turn back whenever you're ready.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Jackson Glacier Overlook trailhead · on Going-to-the-Sun Rd</span></div>
+            <div class="cmr"><span><strong>Florence Falls: ~4 hrs RT</strong> · Gunsight Lake: ~6 hrs RT</span></div>
+            <div class="cmr"><span>1,275 ft elevation gain to lake · no permit needed</span></div>
+          </div>
+          <div class="card-links"><a href="https://www.alltrails.com/trail/us/montana/gunsight-lake-from-going-to-the-sun-road" target="_blank" class="card-link">Trail Info →</a></div>
+        </div>
+      </div>
+
+   </div>
+ </div>
+
+  <!-- DINING & BARS -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Thursday Evening · Whitefish Town</div>
+      <div class="sec-title">Dinner &amp; Bars in Whitefish</div>
+      <div class="sec-sub">After the hike, clean up and head into downtown — everything is walkable from the studio.</div>
+   </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Dinner · Upscale</div>
+          <div class="card-title">Tupelo Grille</div>
+          <span class="badge badge-warn">Reserve ahead</span>
+          <div class="card-desc">Montana meets Southern charm — bison, local trout, craft cocktails. Consistently the best dinner in town. Book before the trip.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>17 Central Ave · ~5 min walk from studio</span></div>
+            <div class="cmr"><span>~$35–55/person</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;"><strong>Reserve now</strong> — fills up weeks in advance in September.</div>
+          <div class="card-links"><a href="#" class="card-link">Reserve a table →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Dinner · Casual</div>
+          <div class="card-title">Pescado Negro</div>
+          <div class="card-desc">Montana's best fish tacos — unexpected but true. Casual, loud, fun. Great for a post-hike meal when you're too tired to dress up.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Downtown Whitefish · walkable</span></div>
+            <div class="cmr"><span>~$18–28/person</span></div>
+            <div class="cmr"><span>No reservations · first come first served</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Bars · Start Here</div>
+          <div class="card-title">Blackstar Brewpub</div>
+          <span class="badge badge-gold">Montana Mingle Venue</span>
+          <div class="card-desc">The Friday night event venue — great Montana craft beers, solid bar food, good vibe. Get familiar with it Thursday so Friday is easy.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Downtown Whitefish · walkable</span></div>
+            <div class="cmr"><span>20+ taps, local and regional craft beers</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Bars · Late Night</div>
+          <div class="card-title">Great Northern Bar &amp; Grill</div>
+          <div class="card-desc">The classic Whitefish dive. Live music most nights, pool tables, cheap drinks, no pretense. This is where the night ends.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>27 Central Ave · walkable</span></div>
+            <div class="cmr"><span>Live music Thu–Sat most weeks</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Coffee · Morning After</div>
+          <div class="card-title">Loula's Café</div>
+          <div class="card-desc">Legendary Whitefish breakfast spot. Big portions, zero pretension. Get the cinnamon roll. Go early — line forms fast on weekends.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>300 2nd St E · 5 min walk</span></div>
+            <div class="cmr"><span>~$12–18/person</span></div>
+            <div class="cmr"><span>Opens 8am · cash or card</span></div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- FRIDAY -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Friday · Sep 4</div>
+      <div class="sec-title">Free Day + Montana Mingle</div>
+      <div class="sec-sub">Free morning and afternoon, then the wedding weekend officially kicks off.</div>
+   </div>
+
+    <div class="card-grid card-grid-2">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Morning / Afternoon · Your Call</div>
+          <div class="card-title">Free Day Options</div>
+          <div class="card-desc">Sleep in, grab breakfast at Loula's, poke around the shops on Central Ave, rent a bike, hit Whitefish Lake for a swim, or just sit on the balcony. This is your buffer day — use it.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Bike rental available downtown</span></div>
+            <div class="cmr"><span>Whitefish City Beach · 10 min walk</span></div>
+            <div class="cmr"><span>Central Ave boutiques + galleries</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card" style="border-color:rgba(168,120,96,.35);background:linear-gradient(135deg,rgba(168,120,96,.04),#fff);">
+        <div class="card-body">
+          <div class="card-tag">Friday · 5:00–8:00 PM</div>
+          <div class="card-title">Montana Mingle</div>
+          <span class="badge badge-gold">Wedding Kickoff Event</span>
+          <div class="card-desc">Brooke &amp; Dan's pre-wedding mixer. Meet the wedding party and fellow guests over drinks and food at Blackstar Brewpub. Don't be late — this is the vibe-setter for the whole weekend.</div>
+          <div class="card-meta">
+            <div class="cmr"><span><strong>Blackstar Brewpub</strong> · Downtown Whitefish</span></div>
+            <div class="cmr"><span><strong>5:00–8:00 PM</strong></span></div>
+            <div class="cmr"><span>Smart casual — think boots and a nice top</span></div>
+            <div class="cmr"><span>Then drive to Bigfork (~45 min) to check in</span></div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+
+    <div class="warn-box" style="margin-top:1rem;"><strong>Check out of Whitefish studio Friday morning</strong> and store bags in the car. After the Montana Mingle (~8pm), drive to Bigfork (~45 min) and check into the Flathead Lake VRBO.</div>
+ </div>
+
+  <!-- DAY BY DAY -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Day-by-Day</div>
+      <div class="sec-title">Whitefish Itinerary</div>
+   </div>
+
+    <div class="itinerary">
+
+      <div class="day-block open" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num">01</div>
+            <div><div class="day-ttl">Arrival Day — Welcome to Montana</div><div class="day-dt">Wednesday, September 2</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item">
+              <div class="tl-time">6:00 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Jackie departs — United Airlines UA530</div>
+                <div class="tl-desc"><strong>EWR (Newark) → ORD (Chicago) → FCA (Kalispell)</strong> · 1 stop · 6h 28m · Confirmation: JJ2783</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">11:27 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Lands at Kalispell (FCA) — Glacier Park International</div>
+                <div class="tl-desc">~15 min drive to downtown Whitefish. Pick up rental car at the airport.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">Afternoon</div>
+              <div class="tl-content">
+                <div class="tl-title">Check into the Downtown Studio</div>
+                <div class="tl-desc">Self check-in with keypad. Drop bags, find the coffee maker, take a breath. You're in Montana.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">Evening</div>
+              <div class="tl-content">
+                <div class="tl-title">First night out in Whitefish <span class="tl-opt">Casual</span></div>
+                <div class="tl-desc">Wander Central Ave, grab dinner somewhere low-key, and have a drink at Blackstar or Great Northern. Feet on the ground night — big hike tomorrow.</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num">02</div>
+            <div><div class="day-ttl">Glacier National Park — Jackie, Ashley, Vale + Carlos</div><div class="day-dt">Thursday, September 3</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item">
+              <div class="tl-time">7:00 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Early breakfast at the studio or Loula's</div>
+                <div class="tl-desc">Pack snacks and water. Glacier trailhead parking fills up by 8–9 AM in peak season. Get moving.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">8:00 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Drive to Glacier (~1 hr 15 min to Logan Pass)</div>
+                <div class="tl-desc">Have your timed entry permit ready if required. Fuel up in Columbia Falls — last gas before the park.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">9:30 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Hit the trail — Highline or Hidden Lake</div>
+                <div class="tl-desc">Highline if you want the full experience (5–7 hrs). Hidden Lake if you want something shorter and equally beautiful (2–3 hrs). Both start at Logan Pass.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">1:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Trailhead lunch<span class="tl-opt">Pack it or Logan Pass Visitor Center</span></div>
+                <div class="tl-desc">The visitor center has basic snacks. Picnic at the trailhead is better — views are unreal.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">4:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Drive back to Whitefish · Clean up</div>
+                <div class="tl-desc">~1 hr drive. Shower at the studio. You've earned it.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">6:30 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Dinner — Tupelo Grille or Pescado Negro</div>
+                <div class="tl-desc">Tupelo for a proper sit-down. Pescado if you're too tired to dress up. Both are great.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">8:30 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Bar crawl — Blackstar → Great Northern</div>
+                <div class="tl-desc">Start at Blackstar (scout the Montana Mingle venue), end at Great Northern for live music. Everything is walkable.</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num">03</div>
+            <div><div class="day-ttl">Free Day → Montana Mingle → Bigfork</div><div class="day-dt">Friday, September 4</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item">
+              <div class="tl-time">Morning</div>
+              <div class="tl-content">
+                <div class="tl-title">Slow morning · Check out by 11 AM</div>
+                <div class="tl-desc">Grab coffee, pack bags. Check out of the Whitefish studio and load the car.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">11:00 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Free afternoon in Whitefish <span class="tl-opt">Your choice</span></div>
+                <div class="tl-desc">Whitefish City Beach, bike rental, boutiques on Central Ave, or drive out to the lake. Bags stay in the car.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">2:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Get ready for the Mingle</div>
+                <div class="tl-desc">Smart casual — this is a wedding event. Boots, a nice top, whatever makes you feel good.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">5:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Montana Mingle — Blackstar Brewpub</div>
+                <div class="tl-desc">Brooke &amp; Dan's pre-wedding mixer. 5–8 PM. Meet everyone, have fun, don't overdo it — the wedding is tomorrow.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">8:15 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Drive to Bigfork (~45 min)</div>
+                <div class="tl-desc">Head south on US-93 then east on MT-82. Beautiful evening drive along the lake. Check into the Flathead Lake VRBO when you arrive.</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+</div>
+</div><!-- /tab-whitefish -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     TAB 2 — BIGFORK (Sep 4–7)
+═══════════════════════════════════════════════════ -->
+<div id="tab-bigfork" class="tab-panel">
+<div class="content-wrap">
+
+  <div class="info-bar">
+    <div class="info-item"><span class="info-label">Location</span><span class="info-value">Bigfork, MT</span></div>
+    <div class="info-item"><span class="info-label">Group 1 Arrives</span><span class="info-value">Fri Sep 4 (late)</span></div>
+    <div class="info-item"><span class="info-label">Group 2 Arrives</span><span class="info-value">Thu Sep 3 (~2pm)</span></div>
+    <div class="info-item"><span class="info-label">Properties</span><span class="info-value">3 Airbnbs</span></div>
+    <div class="info-item"><span class="info-label">Total Crew</span><span class="info-value">16 people</span></div>
+    <div class="info-item"><span class="info-label">Checkout</span><span class="info-value">Mon Sep 7</span></div>
+ </div>
+
+  <!-- GROUP 2 ARRIVAL -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Thursday · Sep 3 — Arrivals</div>
+      <div class="sec-title">Thursday Arrivals → Bigfork</div>
+      <div class="sec-sub">Group 2 flies into Missoula (MSO) and drives to Bigfork (~1 hr 15 min). Sam + Zeb fly into Kalispell (FCA) and drive directly to Bigfork (~32 min).</div>
+   </div>
+
+    <div class="card-grid card-grid-2" style="margin-bottom:1.25rem;">
+
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Genesis Ramirez + Peca Yepes · Confirmed</div>
+          <div class="card-title">Delta DL4112</div>
+          <span class="badge badge-gold">Confirmed</span>
+          <div class="card-meta" style="margin-top:.75rem;">
+            <div class="cmr"><span><strong>Nashville (BNA)</strong> → Salt Lake City (SLC) → Missoula (MSO)</span></div>
+            <div class="cmr"><span>Lands Missoula: <strong>12:33 PM Thursday, Sep 3</strong></span></div>
+            <div class="cmr"><span>Airline: <strong>Delta</strong> · Flight: <strong>DL4112</strong></span></div>
+            <div class="cmr"><span>Drive to Bigfork: ~1 hr 15 min · Arrive ~2:00 PM</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Maria, Mikey, Sofia, Manuela · Confirmed</div>
+          <div class="card-title">Also Landing ~12:33 PM</div>
+          <span class="badge badge-gold">Same arrival time</span>
+          <div class="card-desc" style="margin-top:.75rem;">Maria Piselli, Mikey Kelly, Sofia Arias and Manuela Sinisterra all arrive at the same time as Genesis and Peca on Thursday.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Lands Missoula: <strong>~12:33 PM Thursday, Sep 3</strong></span></div>
+            <div class="cmr"><span>Drive to Bigfork together · Arrive ~2:00 PM</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card" style="border-color:rgba(200,80,50,.2);">
+        <div class="card-body">
+          <div class="card-tag">Michael Thoennes + Ty Humphrey</div>
+          <div class="card-title">Flights TBD</div>
+          <span class="badge badge-warn">Not yet booked</span>
+          <div class="card-desc" style="margin-top:.75rem;">Michael and Ty haven't purchased flights yet. Once booked, their arrival details will be added here.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Closest airport: <strong>Missoula (MSO)</strong> or Kalispell (FCA)</span></div>
+            <div class="cmr"><span>MSO → Bigfork: ~1 hr 15 min</span></div>
+            <div class="cmr"><span>FCA → Bigfork: ~32 min</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Samantha Boettge + Zeb Boettge · Confirmed</div>
+          <div class="card-title">United UA2246</div>
+          <span class="badge badge-gold">Confirmed</span>
+          <div class="card-meta" style="margin-top:.75rem;">
+            <div class="cmr"><span><strong>Denver (DEN)</strong> → Kalispell (FCA)</span></div>
+            <div class="cmr"><span>Lands Kalispell: <strong>3:53 PM Thursday, Sep 3</strong></span></div>
+            <div class="cmr"><span>Airline: <strong>United</strong> · Flight: <strong>UA2246</strong></span></div>
+            <div class="cmr"><span>Drive to Bigfork: ~32 min · Arrive ~4:30 PM</span></div>
+          </div>
+        </div>
+      </div>
+
+   </div>
+
+    <div class="warn-box"><strong>From Missoula Airport:</strong> Take I-90 E to MT-200 E to MT-35 N into Bigfork. ~75 miles, 1 hr 15 min. Stop at Albertsons in Kalispell to stock up on groceries for the stay.</div>
+ </div>
+
+  <!-- ACCOMMODATION -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Accommodations · Two Properties in Bigfork</div>
+      <div class="sec-title">Where Everyone's Staying</div>
+   </div>
+
+    <div class="accom-card">
+      <div class="accom-header">
+        <div class="accom-icon"></div>
+        <div>
+          <div class="accom-name">Expansive Bigfork Resort Retreat on Flathead Lake!</div>
+          <div class="accom-loc">180 Vista Lane, Bigfork, MT 59911 · 3 bed · 3 bath · Sleeps 8 · Rating: 9.8 Exceptional</div>
+       </div>
+     </div>
+      <div class="accom-body">
+        <div class="accom-desc">A resort-style condo right on Flathead Lake — one of the largest freshwater lakes in the US. Three full bedrooms, three bathrooms, a deck with lake views, outdoor space, and a BBQ grill. Close to Bigfork village (11 min walk to the Summer Playhouse), and 32 min to Kalispell airport. This is the home base for the wedding weekend.</div>
+        <div style="background:rgba(60,48,40,.05);border-radius:8px;padding:.85rem 1rem;margin-bottom:1rem;">
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.6rem;">Room Layout</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.6rem;font-size:.85rem;color:var(--timber);">
+            <div><strong>Bedroom 1:</strong> 1 Queen Bed</div>
+            <div><strong>Bedroom 2:</strong> 2 Doubles + Sofa Bed</div>
+            <div><strong>Bedroom 3:</strong> 1 King Bed</div>
+         </div>
+       </div>
+        <div class="accom-amenities">
+          <span class="amenity-tag">Full Kitchen</span>
+          <span class="amenity-tag">Parking</span>
+          <span class="amenity-tag">Deck / Patio</span>
+          <span class="amenity-tag">Balcony</span>
+          <span class="amenity-tag">BBQ Grill</span>
+          <span class="amenity-tag">Outdoor Space</span>
+          <span class="amenity-tag">AC</span>
+          <span class="amenity-tag">9.8 Exceptional · 47 reviews</span>
+       </div>
+        <div class="accom-guests">
+          <div class="accom-guests-label">Who's Staying Here</div>
+          <div class="guest-chips">
+            <span class="guest-chip">Jackie Urteaga</span>
+            <span class="guest-chip">Vale Giraldo</span>
+            <span class="guest-chip">Ashley Alvarez</span>
+            <span class="guest-chip">Carlos Ruga</span>
+            <span class="guest-chip">Gaby Vazquez</span>
+            <span class="guest-chip">Danny Samaei</span>
+         </div>
+       </div>
+        <div style="margin-top:1rem;">
+          <a href="https://www.vrbo.com/7733206ha" target="_blank" class="card-link">View on VRBO →</a>
+       </div>
+     </div>
+   </div>
+
+    <!-- Second Bigfork Airbnb -->
+    <div class="accom-card">
+      <div class="accom-header">
+        <div class="accom-icon"></div>
+        <div>
+          <div class="accom-name">Condo w/ Fireplace, Patio, A/C — Bigfork</div>
+          <div class="accom-loc">105 Oliver Court, Bigfork, MT 59911 · 3 bed · 3 bath · Sleeps 8 · 5.0 · 12 Reviews · Guest Favorite</div>
+       </div>
+     </div>
+      <div class="accom-body">
+        <div class="accom-desc">A deluxe 3-bedroom, 3-bathroom condo with views of the landscaped courtyard. Features an oversized master suite with deep soaking tub and separate shower, a cozy fireplace, and granite countertops. Pool access on property. Hosted by Stay Montana — a Superhost with 10 years of experience. The peacefulness of the Montana lifestyle on idyllic Flathead Lake.</div>
+        <div style="background:rgba(60,48,40,.05);border-radius:8px;padding:.85rem 1rem;margin-bottom:1rem;">
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.6rem;">Room Layout</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.6rem;font-size:.85rem;color:var(--timber);">
+            <div><strong>Bedroom 1:</strong> 1 King Bed</div>
+            <div><strong>Bedroom 2:</strong> 1 King Bed</div>
+            <div><strong>Bedroom 3:</strong> 2 Queen Beds</div>
+         </div>
+       </div>
+        <div class="accom-amenities">
+          <span class="amenity-tag">Full Kitchen</span>
+          <span class="amenity-tag">Fireplace</span>
+          <span class="amenity-tag">Soaking Tub</span>
+          <span class="amenity-tag">Pool</span>
+          <span class="amenity-tag">Patio</span>
+          <span class="amenity-tag">Free Parking</span>
+          <span class="amenity-tag">WiFi</span>
+          <span class="amenity-tag">A/C</span>
+          <span class="amenity-tag">Washer + Dryer</span>
+          <span class="amenity-tag">Workspace</span>
+          <span class="amenity-tag">Self Check-in</span>
+          <span class="amenity-tag">Superhost · 10 yrs</span>
+       </div>
+        <div class="accom-guests">
+          <div class="accom-guests-label">Who's Staying Here · Arrives Thursday Sep 3</div>
+          <div class="guest-chips">
+            <span class="guest-chip">Genesis Ramirez</span>
+            <span class="guest-chip">Peca Yepes</span>
+            <span class="guest-chip">Maria Piselli</span>
+            <span class="guest-chip">Mikey Kelly</span>
+            <span class="guest-chip">Michael Thoennes</span>
+            <span class="guest-chip">Ty Humphrey</span>
+            <span class="guest-chip">Sofia Arias</span>
+            <span class="guest-chip">Manuela Sinisterra</span>
+         </div>
+       </div>
+     </div>
+   </div>
+
+    <!-- Sam & Zeb Airbnb -->
+    <div class="accom-card">
+      <div class="accom-header">
+        <div class="accom-icon"></div>
+        <div>
+          <div class="accom-name">Sam &amp; Zeb's Airbnb — Downtown Bigfork</div>
+          <div class="accom-loc">537 Electric Ave, Bigfork, MT 59911 · Their own place</div>
+        </div>
+      </div>
+      <div class="accom-body">
+        <div class="accom-desc">Samantha and Zeb are staying in their own Airbnb right in the heart of Bigfork village on Electric Ave — walkable to restaurants, galleries, and the Summer Playhouse. They're traveling as a pair and joining the group for all the big events.</div>
+        <div class="accom-guests">
+          <div class="accom-guests-label">Who's Staying Here · Arrives Thursday Sep 3</div>
+          <div class="guest-chips">
+            <span class="guest-chip">Samantha Boettge</span>
+            <span class="guest-chip">Zeb Boettge</span>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <a href="https://www.airbnb.com/rooms/50485081" target="_blank" class="card-link">View on Airbnb →</a>
+        </div>
+      </div>
+    </div>
+
+ </div>
+
+  <!-- PROPERTY MAP -->
+  <div class="content-block">
+    <div class="sec-header" style="margin-bottom:1.25rem;">
+      <div class="sec-eyebrow">Bigfork · Interactive Map</div>
+      <div class="sec-title" style="font-size:1.3rem;">Property Distances</div>
+      <div class="sec-sub">All three Bigfork properties are within ~0.5 miles of each other — easy driving distance and a short walk between most.</div>
+    </div>
+    <!-- three Google Maps panels -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.25rem;">
+
+      <div>
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+          <div style="width:11px;height:11px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
+          <span style="font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--timber);">Ashley &amp; Jackie's Group — 180 Vista Lane</span>
+        </div>
+        <iframe
+          src="https://maps.google.com/maps?q=180+Vista+Lane,+Bigfork,+MT+59911&z=16&output=embed"
+          width="100%" height="220"
+          style="border:0;border-radius:10px;display:block;border:1px solid rgba(92,80,72,.15);"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="font-size:.7rem;color:var(--dust);margin-top:.4rem;text-align:center;">180 Vista Lane · Main group</div>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+          <div style="width:11px;height:11px;border-radius:50%;background:#7D8B72;flex-shrink:0;"></div>
+          <span style="font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--timber);">Genesis Group — 105 Oliver Court</span>
+        </div>
+        <iframe
+          src="https://maps.google.com/maps?q=105+Oliver+Court,+Bigfork,+MT+59911&z=16&output=embed"
+          width="100%" height="220"
+          style="border:0;border-radius:10px;display:block;border:1px solid rgba(92,80,72,.15);"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="font-size:.7rem;color:var(--dust);margin-top:.4rem;text-align:center;">105 Oliver Court · Genesis group</div>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+          <div style="width:11px;height:11px;border-radius:50%;background:#4A6A8A;flex-shrink:0;"></div>
+          <span style="font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--timber);">Sam &amp; Zeb — 537 Electric Ave</span>
+        </div>
+        <iframe
+          src="https://maps.google.com/maps?q=537+Electric+Ave,+Bigfork,+MT+59911&z=16&output=embed"
+          width="100%" height="220"
+          style="border:0;border-radius:10px;display:block;border:1px solid rgba(92,80,72,.15);"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="font-size:.7rem;color:var(--dust);margin-top:.4rem;text-align:center;">537 Electric Ave · Sam + Zeb</div>
+      </div>
+
+    </div>
+
+    <!-- distance table -->
+    <div style="background:rgba(60,48,40,.04);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem;">
+      <div style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.75rem;">Distances Between Properties</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;">
+        <div style="font-size:.8rem;color:var(--timber);display:flex;flex-direction:column;gap:.25rem;">
+          <span style="font-weight:600;">Ashley &amp; Jackie ↔ Genesis</span>
+          <span style="color:var(--dust);">0.10 mi</span>
+          <span style="color:var(--dust);">~2 min walk</span>
+          <span style="color:var(--dust);">~1 min drive</span>
+        </div>
+        <div style="font-size:.8rem;color:var(--timber);display:flex;flex-direction:column;gap:.25rem;">
+          <span style="font-weight:600;">Genesis ↔ Sam &amp; Zeb</span>
+          <span style="color:var(--dust);">0.27 mi</span>
+          <span style="color:var(--dust);">~5 min walk</span>
+          <span style="color:var(--dust);">~2 min drive</span>
+        </div>
+        <div style="font-size:.8rem;color:var(--timber);display:flex;flex-direction:column;gap:.25rem;">
+          <span style="font-weight:600;">Ashley &amp; Jackie ↔ Sam &amp; Zeb</span>
+          <span style="color:var(--dust);">0.35 mi</span>
+          <span style="color:var(--dust);">~7 min walk</span>
+          <span style="color:var(--dust);">~2 min drive</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="https://www.google.com/maps/dir/180+Vista+Lane,+Bigfork,+MT+59911/105+Oliver+Court,+Bigfork,+MT+59911/537+Electric+Ave,+Bigfork,+MT+59911" target="_blank" style="font-size:.75rem;color:var(--msky);letter-spacing:.06em;text-decoration:none;border-bottom:1px solid rgba(74,106,138,.3);">View all three on Google Maps →</a>
+    </div>
+  </div>
+
+  <!-- FRIDAY · GLACIER (GROUP 2) -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Friday · Sep 4</div>
+      <div class="sec-title">Glacier National Park — Early Morning</div>
+      <div class="sec-sub">Group 2 hits Glacier at 5 AM to beat the crowds — and the dress code. Goal: wrapped up at the park by noon, back at the VRBO by 1:45 PM, changed and rested before the Montana Mingle.</div>
+    </div>
+
+    <div class="warn-box"><strong>Timed entry required.</strong> Going-to-the-Sun Road needs a vehicle reservation between 6 AM–3 PM at the St. Mary or Apgar entrances. Book at <strong>recreation.gov</strong> — sells out weeks in advance.</div>
+
+    <div class="card-grid card-grid-2" style="margin-top:1.25rem;">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">The Plan · Group 2</div>
+          <div class="card-title">Glacier + Montana Mingle</div>
+          <div class="card-desc">Genesis, Peca, Maria, Mikey, Michael Thoennes, Ty, Sofia + Manuela leave the VRBO very early to reach the park before 8 AM. Hike, wrap up by noon, drive back to Bigfork, clean up, and head to Whitefish for the Montana Mingle at 5 PM.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>~1 hr 45 min drive from Bigfork to Logan Pass</span></div>
+            <div class="cmr"><span>Leave VRBO 5:00 AM · At trailhead ~6:45 AM</span></div>
+            <div class="cmr"><span>Wrapped up at park by 12:00 PM · Drive back</span></div>
+            <div class="cmr"><span>Back at VRBO ~1:45 PM · Change + rest</span></div>
+            <div class="cmr"><span>Depart for Whitefish ~4:00 PM · Mingle 5–8 PM</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Recommended Trail</div>
+          <div class="card-title">Hidden Lake Overlook</div>
+          <span class="badge badge-gold">Best for this timeline</span>
+          <div class="card-desc">2.7 mi roundtrip, 2–3 hours total. Perfect for a group that needs to be back by noon. Mountain goats, an impossibly blue alpine lake, and views that'll wreck you. Everyone leaves happy.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Logan Pass · 2.7 mi RT · 460 ft gain</span></div>
+            <div class="cmr"><span>Paved + boardwalk start · No permit needed at Logan Pass</span></div>
+          </div>
+          <div class="card-links"><a href="https://www.nps.gov/places/hidden-lake-trailhead.htm" target="_blank" class="card-link">Trail Info →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- THE WEDDING -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Saturday · Sep 5</div>
+      <div class="sec-title">Brooke &amp; Dan's Wedding Day</div>
+   </div>
+
+    <div class="wedding-block">
+      <div class="wedding-title">Brooke &amp; Dan</div>
+      <div class="wedding-sub">Saturday, September 5, 2026 · Whitefish &amp; Bigfork, MT</div>
+      <div class="wedding-events">
+
+        <div class="we-item">
+          <div class="we-time"><div class="we-time-val">1:00</div><div class="we-time-label">PM</div></div>
+          <div class="we-info">
+            <div class="we-name">Ceremony</div>
+            <div class="we-venue">St. John Paul II Catholic Church · Whitefish, MT</div>
+         </div>
+       </div>
+
+        <div class="we-item">
+          <div class="we-time"><div class="we-time-val">3:00</div><div class="we-time-label">PM</div></div>
+          <div class="we-info">
+            <div class="we-name">Cocktail Hour</div>
+            <div class="we-venue">The Venue at Montana 45 · Bigfork, MT</div>
+         </div>
+       </div>
+
+        <div class="we-item">
+          <div class="we-time"><div class="we-time-val">5:00</div><div class="we-time-label">PM</div></div>
+          <div class="we-info">
+            <div class="we-name">Reception</div>
+            <div class="we-venue">The Venue at Montana 45 · Bigfork, MT</div>
+         </div>
+       </div>
+
+     </div>
+   </div>
+
+    <div class="warn-box"><strong>Plan your drive:</strong> St. John Paul II is in Whitefish (~45 min from Bigfork). Leave the VRBO by 12:00 PM to arrive comfortably before 1pm. Cocktail hour and reception are back in Bigfork area at The Venue at Montana 45.</div>
+
+    <div class="card-grid" style="margin-top:1.25rem;">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">What to Wear</div>
+          <div class="card-title">Dress Code</div>
+          <div class="card-desc">Catholic ceremony — dress appropriately. Montana wedding receptions tend to be semi-formal to formal with a western flair. Think elegant + boots if you want. Confirm with Brooke for specifics.</div>
+       </div>
+     </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Morning Prep</div>
+          <div class="card-title">Getting Ready at the VRBO</div>
+          <div class="card-desc">Three bathrooms for six people — work out a schedule the night before. Start hair/makeup by 10am to leave by noon comfortably.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Start getting ready: <strong>10:00 AM</strong></span></div>
+            <div class="cmr"><span>Leave VRBO: <strong>12:00 PM</strong></span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+  <!-- SUNDAY -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Sunday · Sep 6</div>
+      <div class="sec-title">Brunch + Seize the Day</div>
+   </div>
+
+    <div class="card" style="margin-bottom:1.25rem;border-color:rgba(168,120,96,.3);">
+      <div class="card-body">
+        <div class="card-tag">Sunday · 10:30 AM – 12:00 PM</div>
+        <div class="card-title">Wedding Farewell Brunch</div>
+        <span class="badge badge-gold">Wedding Event</span>
+        <div class="card-desc">Send-off brunch hosted by Brooke &amp; Dan for wedding guests. A perfect low-key morning after the reception before the crew disperses.</div>
+        <div class="card-meta">
+          <div class="cmr"><span><strong>The Venue at Montana 45</strong> · Bigfork, MT</span></div>
+          <div class="cmr"><span><strong>10:30 AM – 12:00 PM</strong></span></div>
+       </div>
+     </div>
+   </div>
+
+    <div class="sec-sub" style="margin-bottom:1.25rem;">After brunch, the afternoon is yours. Here are the best options for a full Montana Sunday experience:</div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Afternoon · On the Water</div>
+          <div class="card-title">Flathead Lake</div>
+          <span class="badge badge-gold">Right at the VRBO</span>
+          <div class="card-desc">One of the largest and clearest freshwater lakes in the US. Rent a pontoon or kayaks, go for a swim, or just sit on the dock with a cold drink. You're already there.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Kayak/SUP rental in Bigfork village</span></div>
+            <div class="cmr"><span>Pontoon boat charters available — book ahead</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Afternoon · Soak</div>
+          <div class="card-title">Quinn's Hot Springs</div>
+          <div class="card-desc">Natural hot spring pools on the Clark Fork River — a Montana institution. Perfect for post-wedding recovery. Multiple pools at different temperatures.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Plains, MT · ~45 min from Bigfork</span></div>
+            <div class="cmr"><span>~$20–25 day pass</span></div>
+            <div class="cmr"><span>Open daily · book ahead on weekends</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;"><strong>Reserve online</strong> — can sell out on summer weekends.</div>
+          <div class="card-links"><a href="#" class="card-link">Reserve →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Afternoon · Scenic Drive</div>
+          <div class="card-title">East Shore of Flathead Lake</div>
+          <div class="card-desc">Drive the scenic east shore of the lake down through cherry orchards and small towns. Stop in Polson, grab fresh cherries from a roadside stand, and drive back. Classic Montana afternoon.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>~1.5 hr round trip loop</span></div>
+            <div class="cmr"><span>Cherry season peaks late July–August</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Afternoon · Walk &amp; Explore</div>
+          <div class="card-title">Bigfork Village Art Walk</div>
+          <div class="card-desc">Bigfork is a surprise — a tiny arts town with galleries, good food, and charming streets. Walk Electric Avenue, grab a cone from the ice cream shop, visit Eva Gates Homemade Preserves (12 min walk from VRBO).</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Electric Ave · 10-15 min walk from VRBO</span></div>
+            <div class="cmr"><span>Ice cream + local jam shop · cash friendly</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Dinner · Sunday Night</div>
+          <div class="card-title">Bigfork Inn</div>
+          <div class="card-desc">Classic Bigfork fine dining in a historic building. Great for a final group dinner before Monday departures. Steaks, seafood, and a solid wine list.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>604 Electric Ave · 12 min walk</span></div>
+            <div class="cmr"><span>~$35–55/person</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;"><strong>Reserve ahead</strong> for a group of 6.</div>
+          <div class="card-links"><a href="#" class="card-link">Reserve →</a></div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- MONDAY DEPARTURES -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Monday · Sep 7</div>
+      <div class="sec-title">Departures</div>
+      <div class="sec-sub">Everyone has different flights. Full flight details coming once uploaded.</div>
+   </div>
+
+    <div class="card-grid" style="margin-bottom:1.25rem;">
+
+      <!-- Jackie confirmed -->
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Jackie Urteaga · Confirmed</div>
+          <div class="card-title">United UA1989</div>
+          <span class="badge badge-gold">Confirmed · JJ2783</span>
+          <div class="card-meta" style="margin-top:.75rem;">
+            <div class="cmr"><span><strong>FCA (Kalispell)</strong> → ORD (Chicago) → <strong>EWR (Newark)</strong></span></div>
+            <div class="cmr"><span>Departs Kalispell: <strong>12:33 PM</strong></span></div>
+            <div class="cmr"><span>Arrives Newark: <strong>9:32 PM</strong></span></div>
+            <div class="cmr">⏱ <span>Duration: 5h 54m · 1 stop (ORD)</span></div>
+            <div class="cmr"><span>Leave Bigfork VRBO by <strong>9:30 AM</strong></span></div>
+         </div>
+       </div>
+     </div>
+
+      <!-- Others TBD -->
+      <div class="card" style="border-color:rgba(200,80,50,.2);">
+        <div class="card-body">
+          <div class="card-tag">Vale, Ashley, Carlos, Gaby, Danny</div>
+          <div class="card-title">Flights TBD</div>
+          <span class="badge badge-warn">Upload needed</span>
+          <div class="card-desc" style="margin-top:.75rem;">Departure details for the rest of Group 1 will be added here once their flights are shared.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Closest airport: <strong>FCA (Kalispell)</strong> · 32 min from VRBO</span></div>
+            <div class="cmr"><span>Also an option: <strong>MSO (Missoula)</strong> · ~1 hr 15 min</span></div>
+         </div>
+       </div>
+     </div>
+
+      <!-- Group 2 TBD -->
+      <div class="card" style="border-color:rgba(200,80,50,.2);">
+        <div class="card-body">
+          <div class="card-tag">Group 2 — Genesis, Peca, Maria, Mikey, Sofia, Manuela</div>
+          <div class="card-title">Return Flights TBD</div>
+          <span class="badge badge-warn">Upload needed</span>
+          <div class="card-desc" style="margin-top:.75rem;">Group 2 return flights from MSO or FCA will be added once shared.</div>
+       </div>
+     </div>
+
+      <!-- Michael + Ty -->
+      <div class="card" style="border-color:rgba(200,80,50,.2);">
+        <div class="card-body">
+          <div class="card-tag">Michael Thoennes + Ty Humphrey</div>
+          <div class="card-title">Not Yet Booked</div>
+          <span class="badge badge-warn">TBD</span>
+          <div class="card-desc" style="margin-top:.75rem;">Michael and Ty haven't purchased flights yet. Details will be added once booked.</div>
+       </div>
+     </div>
+
+   </div>
+
+    <div class="warn-box"><strong>VRBO checkout:</strong> Confirm checkout time with the host. Typically 10–11 AM. Coordinate bags early if flights are staggered. Jackie departs FCA at 12:33 PM — leave Bigfork by 9:30 AM.</div>
+ </div>
+
+  <!-- DAY BY DAY -->
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Day-by-Day</div>
+      <div class="sec-title">Bigfork Itinerary</div>
+   </div>
+
+    <div class="itinerary">
+
+      <div class="day-block open" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num">04</div>
+            <div><div class="day-ttl">Glacier Morning + Montana Mingle + Group 1 Arrives</div><div class="day-dt">Friday, September 4</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item">
+              <div class="tl-time">5:00 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Group 2 departs for Glacier <span class="tl-opt">Genesis, Peca, Maria, Mikey, Michael, Ty, Sofia, Manuela</span></div>
+                <div class="tl-desc">Leave the VRBO early to beat the crowds and the timed entry window. ~1 hr 45 min drive to Logan Pass. Fuel up in Kalispell.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">6:45 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Arrive Logan Pass — Hidden Lake Overlook</div>
+                <div class="tl-desc">2.7 mi roundtrip, 2–3 hours. Start early for parking and cooler temps. Mountain goats, alpine lake, and views that are worth the 5 AM alarm.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">12:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Wrapped up — drive back to Bigfork</div>
+                <div class="tl-desc">~1 hr 45 min back. At the VRBO by ~1:45 PM. Shower, eat, rest before the Mingle.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">4:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Depart for Whitefish — Montana Mingle</div>
+                <div class="tl-desc">~45 min drive to Blackstar Brewpub. Mingle runs 5–8 PM. You're dressed, rested, and done with Glacier before most people have had coffee.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">~8:30 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Group 1 drives from Whitefish → Bigfork <span class="tl-opt">Jackie, Ashley, Vale, Carlos, Gaby, Danny</span></div>
+                <div class="tl-desc">After the Mingle, Group 1 heads south (~45 min) and checks into the Flathead Lake VRBO. Crew is finally all together.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">~9:15 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Full crew at the Flathead Lake VRBO</div>
+                <div class="tl-desc">Everyone's in. Open the deck, grab a drink from the kitchen, take in the lake at night. Big day tomorrow.</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num">05</div>
+            <div><div class="day-ttl">Wedding Day — Brooke &amp; Dan</div><div class="day-dt">Saturday, September 5</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item">
+              <div class="tl-time">8:00 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Morning at the VRBO — breakfast + coffee on the deck</div>
+                <div class="tl-desc">Make something at the house or grab something quick in Bigfork village. Enjoy the lake view before the chaos begins.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">10:00 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Get ready — hair, makeup, outfits</div>
+                <div class="tl-desc">3 bathrooms for 6 people. Make a schedule tonight. Aim to be fully dressed by 11:45 AM.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">12:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Depart for Whitefish (~45 min)</div>
+                <div class="tl-desc">Leave by noon. Build in buffer — don't be that person who walks in late to a Catholic ceremony.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">1:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Ceremony — St. John Paul II Catholic Church</div>
+                <div class="tl-desc">Whitefish, MT. Be seated 10 min early.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">3:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Cocktail Hour — The Venue at Montana 45</div>
+                <div class="tl-desc">Bigfork area. Drive from the church (~45 min). Drinks, appetizers, catch up with people you just met at the ceremony.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">5:00 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Reception — The Venue at Montana 45</div>
+                <div class="tl-desc">Dance, eat, celebrate Brooke and Dan. This is the night.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">Late</div>
+              <div class="tl-content">
+                <div class="tl-title">Back to the VRBO</div>
+                <div class="tl-desc">VRBO is close to the venue — easy ride home. Deck beers optional. Sleep required.</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num">06</div>
+            <div><div class="day-ttl">Brunch + Seize the Day</div><div class="day-dt">Sunday, September 6</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item">
+              <div class="tl-time">10:30 AM</div>
+              <div class="tl-content">
+                <div class="tl-title">Wedding Farewell Brunch — The Venue at Montana 45</div>
+                <div class="tl-desc">10:30 AM – 12:00 PM. Hosted by Brooke &amp; Dan. Don't skip it.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">12:30 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Afternoon adventure — pick one (or two)</div>
+                <div class="tl-desc">Flathead Lake on the deck, Quinn's Hot Springs, east shore drive, Bigfork village walk. Full options in the cards above.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">6:30 PM</div>
+              <div class="tl-content">
+                <div class="tl-title">Final group dinner — Bigfork Inn<span class="tl-opt">Reserve ahead</span></div>
+                <div class="tl-desc">Last meal together before everyone scatters. Make it count.</div>
+             </div>
+           </div>
+            <div class="tl-item">
+              <div class="tl-time">Evening</div>
+              <div class="tl-content">
+                <div class="tl-title">Last night on the deck — Flathead Lake</div>
+                <div class="tl-desc">Pack bags tonight. Enjoy the lake. Stars out here are something else.</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num">07</div>
+            <div><div class="day-ttl">Departures — Safe Travels Everyone</div><div class="day-dt">Monday, September 7</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item">
+              <div class="tl-time">Morning</div>
+              <div class="tl-content">
+                <div class="tl-title">Checkout + departures — flight details TBD</div>
+                <div class="tl-desc">Flight info will be added here once uploaded. FCA (Kalispell) is 32 min away. Plan to leave the VRBO 2.5 hrs before your flight.</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+</div>
+</div><!-- /tab-bigfork -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     TAB 3 — EXPLORE MONTANA
+═══════════════════════════════════════════════════ -->
+<div id="tab-explore" class="tab-panel">
+<div class="content-wrap">
+
+  <!-- Jump nav -->
+  <div class="explore-jumps">
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-horseback-whitefish').scrollIntoView({behavior:'smooth',block:'start'})">Horseback · Whitefish</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-horseback-bigfork').scrollIntoView({behavior:'smooth',block:'start'})">Horseback · Bigfork</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-fishing').scrollIntoView({behavior:'smooth',block:'start'})">Fly Fishing</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-adventures').scrollIntoView({behavior:'smooth',block:'start'})">Adventures</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-shopping').scrollIntoView({behavior:'smooth',block:'start'})">Shopping</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-coffee').scrollIntoView({behavior:'smooth',block:'start'})">Coffee</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-bars').scrollIntoView({behavior:'smooth',block:'start'})">Bars</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-dinner-whitefish').scrollIntoView({behavior:'smooth',block:'start'})">Dinner · Whitefish</button>
+    <button class="explore-jump-btn" onclick="document.getElementById('explore-dining-bigfork').scrollIntoView({behavior:'smooth',block:'start'})">Dining · Bigfork</button>
+  </div>
+
+  <!-- ── HORSEBACK RIDING · WHITEFISH ───────────────────── -->
+  <div class="content-block" id="explore-horseback-whitefish">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Horseback Riding · Near Whitefish</div>
+      <div class="sec-title">Lessons &amp; Trail Rides</div>
+      <div class="sec-sub">Jackie wants a lesson — the group can trail ride. Both options covered below.</div>
+   </div>
+
+    <div style="margin-bottom:.75rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600;">Lessons — For Jackie</div>
+    <div class="card-grid card-grid-2" style="margin-bottom:1.75rem;">
+
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Private &amp; Group Lessons · ~20 min from Whitefish</div>
+          <div class="card-title">Lost Creek Ranch</div>
+          <span class="badge badge-gold">Recommended for Beginners</span>
+          <div class="card-desc">Family-owned ranch between Kalispell and Whitefish. Offers private, semi-private, and group lessons for all ages. Western riding, beginner horsemanship, barrel racing, and roping. Private lessons run 45–60 min.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Between Kalispell &amp; Whitefish · ~20 min</span></div>
+            <div class="cmr"><span>Contact for pricing (not listed publicly)</span></div>
+            <div class="cmr"><span>Ages 5+ · Private, semi-private, or group</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://www.lostcreekranch.net/" target="_blank" class="card-link">Website →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Experiential Lessons · Columbia Falls (~15 min)</div>
+          <div class="card-title">Firefly Horse Co.</div>
+          <span class="badge badge-gold">Mindful + Beginner-Friendly</span>
+          <div class="card-desc">Equine experiential learning on 24 acres in Columbia Falls. Focus on horse-human connection and mindfulness — great for a first real lesson. Individual, semi-private, and group options for adults and kids.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Columbia Falls, MT · ~15 min from Whitefish</span></div>
+            <div class="cmr"><span>Also ~30 min from Bigfork</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://fireflyhorseco.com/" target="_blank" class="card-link">Website + Book →</a>
+         </div>
+       </div>
+     </div>
+
+   </div>
+
+    <div style="margin-bottom:.75rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:600;">Trail Rides — For the Group</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">2-Hour Trail Ride · Whitefish Area</div>
+          <div class="card-title">The Bar W Guest Ranch</div>
+          <span class="badge badge-navy">Best Group Option</span>
+          <div class="card-desc">Award-winning dude ranch with a strong safety record. 2-hour guided trail rides open to the public — no full ranch stay required. Beginner-friendly wranglers.</div>
+          <div class="card-meta">
+            <div class="cmr"><span><strong>$110/person</strong></span></div>
+            <div class="cmr"><span>(406) 863-9099</span></div>
+            <div class="cmr"><span>Whitefish area</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://thebarw.com/public-rides/2-hour-trail-rides" target="_blank" class="card-link">Book Rides →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">1 Hr to Full Day · Inside Glacier NP</div>
+          <div class="card-title">Swan Mountain Outfitters</div>
+          <span class="badge badge-navy">Only NPS-Permitted Outfitter in Glacier</span>
+          <div class="card-desc">The only horseback outfitter permitted to operate inside Glacier National Park. Rides from Apgar, Lake McDonald, and Many Glacier. From 1-hour rides to full-day backcountry adventures.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Apgar / Lake McDonald / Many Glacier</span></div>
+            <div class="cmr"><span>1 hr → full day → overnight pack trips</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;"><strong>Book early</strong> — spots sell out weeks ahead in summer.</div>
+          <div class="card-links">
+            <a href="https://www.swanmountainglacier.com/" target="_blank" class="card-link">Website + Book →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Wagon + Clydesdale Experience</div>
+          <div class="card-title">Clydesdale Outpost</div>
+          <div class="card-desc">102-acre luxury guest ranch featuring beautiful Clydesdale horses. Wagon Wander rides with barn visits — a unique, relaxed way to experience ranch life. Beginner-friendly and highly rated.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Whitefish area</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://www.clydesdaleoutpost.com/clydesdale-experiences" target="_blank" class="card-link">Website →</a>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- ── HORSEBACK RIDING · BIGFORK ─────────────────────── -->
+  <div class="content-block" id="explore-horseback-bigfork">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Horseback Riding · Near Bigfork</div>
+      <div class="sec-title">Lessons &amp; Trail Rides — Flathead Lake Area</div>
+   </div>
+
+    <div style="margin-bottom:.75rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600;">Lessons + Rides — Bigfork Area</div>
+    <div class="card-grid card-grid-2" style="margin-bottom:1.75rem;">
+
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Lessons + Trail Rides · On Flathead Lake</div>
+          <div class="card-title">Flathead Lake Lodge (Averill's)</div>
+          <span class="badge badge-gold">Historic · Right in Bigfork</span>
+          <div class="card-desc">Third-generation family-owned working guest ranch on 2,000 acres directly on Flathead Lake. Private riding lessons plus 1-, 2-, and 3-hour trail rides. Breakfast rides and lunch rides also available. This is the best horseback option closest to the Bigfork VRBO.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Bigfork, MT · directly on Flathead Lake</span></div>
+            <div class="cmr"><span>1-hr, 2-hr, 3-hr rides + breakfast/lunch rides</span></div>
+            <div class="cmr"><span>(406) 837-4391</span></div>
+            <div class="cmr"><span>info@flatheadlakelodge.com</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;"><strong>Call ahead</strong> — rides may be limited to lodge guests in peak season. Worth calling to ask about day visitors.</div>
+          <div class="card-links">
+            <a href="https://www.flatheadlakelodge.com/" target="_blank" class="card-link">Website →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card" style="border-color:rgba(168,120,96,.3);">
+        <div class="card-body">
+          <div class="card-tag">Lessons · Also Serves Bigfork Area</div>
+          <div class="card-title">Firefly Horse Co.</div>
+          <div class="card-desc">The same Columbia Falls operation also serves the Bigfork/Flathead Lake area — about 30 min from the VRBO. Great choice to book a private lesson for Jackie while the group does something else nearby.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Columbia Falls · ~30 min from Bigfork</span></div>
+            <div class="cmr"><span>Individual + semi-private lessons</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://fireflyhorseco.com/" target="_blank" class="card-link">Website + Book →</a>
+         </div>
+       </div>
+     </div>
+
+   </div>
+
+    <div style="margin-bottom:.75rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:600;">Trail Rides — Group Option</div>
+    <div class="card-grid card-grid-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Multi-Option · Swan Lake Area</div>
+          <div class="card-title">Swan Mountain Outfitters</div>
+          <div class="card-desc">Also operates out of Swan Lake near Bigfork — English and Western riding, ages 12+. Multiple ride lengths from 1 hr to full day. Good group option from the Bigfork base.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>26356 Soup Creek Rd, Swan Lake, MT</span></div>
+            <div class="cmr"><span>1 hr to all day · ages 12+</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://www.swanmountainglacier.com/" target="_blank" class="card-link">Website →</a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+  <!-- ── FLY FISHING ─────────────────────────────────────── -->
+  <div class="content-block" id="explore-fishing">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Guided Fly Fishing</div>
+      <div class="sec-title">Fly Fishing — Flathead River &amp; Beyond</div>
+      <div class="sec-sub">September is prime fly fishing season in Montana. All outfitters below provide gear and instruction.</div>
+   </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Near Whitefish · Full &amp; Half Day</div>
+          <div class="card-title">Stumptown Anglers</div>
+          <span class="badge badge-navy">Local Expert</span>
+          <div class="card-desc">Whitefish's home-team guide service. Specializes in the Flathead River (15 min from downtown), Clark Fork, Blackfoot, and Missouri. Wild westslope cutthroat, bull trout, and rainbow trout. Half-day and full-day trips plus 2–3 day extended adventures.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Flathead River · 15 min from Whitefish</span></div>
+            <div class="cmr"><span>Rich: (406) 261-7424</span></div>
+            <div class="cmr"><span>Northern Rockies Outfitters: (877) 906-9949</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://stumptownanglers.com/" target="_blank" class="card-link">Website + Book →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Near Whitefish + Bigfork · All Levels</div>
+          <div class="card-title">Bent Fly Fishing</div>
+          <span class="badge badge-gold">Best for Beginners</span>
+          <div class="card-desc">Premier guiding service in the Flathead Valley. All gear included — great for first-timers. Full-day and half-day guided trips. One of the most beginner-friendly operations in the area.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>All gear + instruction included</span></div>
+            <div class="cmr"><span>Half-day and full-day options</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://bentflyfishing.com/" target="_blank" class="card-link">Website + Book →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Near Bigfork · 28 Years Experience</div>
+          <div class="card-title">Bigfork Anglers</div>
+          <span class="badge badge-navy">Right in Bigfork</span>
+          <div class="card-desc">Fly shop and guide service with 28 years of licensed guiding experience — right in Bigfork village. Fish the Bitterroot, Blackfoot, Clark Fork, Missouri, Swan River, and more. Full booking available online.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>405 Bridge St, Bigfork, MT 59911</span></div>
+            <div class="cmr"><span>(406) 837-3675</span></div>
+            <div class="cmr"><span>Swan River · Bigfork village walk-in</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://bigforkanglers.com/" target="_blank" class="card-link">Website →</a>
+            <a href="https://bigforkanglers.com/book-your-trip/" target="_blank" class="card-link">Book a Trip →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Whitefish + Surrounding Rivers</div>
+          <div class="card-title">Riverstone Outfitters</div>
+          <div class="card-desc">Fishing charters and guided trips on all three forks of the Flathead River. Lake charters on Whitefish Lake also available. North, Middle, and South Fork options.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>North, Middle &amp; South Fork Flathead</span></div>
+            <div class="cmr"><span>Whitefish Lake charters</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://www.riverstonemontana.com/pages/whitefish-fishing-charters-guided-trips" target="_blank" class="card-link">Website + Book →</a>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- ── MORE ADVENTURES ────────────────────────────────── -->
+  <div class="content-block" id="explore-adventures">
+    <div class="sec-header">
+      <div class="sec-eyebrow">More Montana Adventures</div>
+      <div class="sec-title">Other Things to Do</div>
+   </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Zip Lining · Whitefish Mountain Resort</div>
+          <div class="card-title">Whitefish Mountain Zip Tour</div>
+          <div class="card-desc">Six-line zip course with a 1,900-foot span and up to 300 feet above the forest floor. 2-hour guided adventure with light hiking between zips. Views of the Flathead Valley are unreal.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Whitefish Mountain Resort · 8 min from downtown</span></div>
+            <div class="cmr"><span>~2 hrs · guided</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://skiwhitefish.com/zip-line-tours/" target="_blank" class="card-link">Book →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Whitewater Rafting · Flathead River</div>
+          <div class="card-title">Flathead Raft Company</div>
+          <div class="card-desc">Tribally-owned operation out of Polson. Half-day Buffalo Rapids (Class II–III) on the Lower Flathead, full-day and multi-day options on the Middle and North Fork. Also runs guided kayak tours to Wild Horse Island on Flathead Lake.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Polson, MT · south end of Flathead Lake</span></div>
+            <div class="cmr"><span>Class II–III · Half-day to multi-day</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://www.flatheadraftcompany.com/" target="_blank" class="card-link">Website + Book →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">ATV / RZR Rentals · Whitefish</div>
+          <div class="card-title">Glacier Tourbase — RZR Side-by-Side</div>
+          <div class="card-desc">4-seater RZR side-by-side rentals just north of Whitefish. Guided or self-guided half-day and full-day rides through mountain trails. One of the most fun afternoon options for a group.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Just north of Whitefish</span></div>
+            <div class="cmr"><span>Ages 21+ · valid driver's license required</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://glaciertourbase.com/tours/whitefish/adventure_off-road/whitefish-rzr-side-by-side-rental-(4-seater)" target="_blank" class="card-link">Book →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">ATV Rentals · Flathead Valley</div>
+          <div class="card-title">Northwest Montana Adventure</div>
+          <div class="card-desc">UTV rentals half-day and all-day — guided or unguided through Olney and Whitefish area trails. Montana's backcountry by ATV is a completely different experience.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Olney / Whitefish / Flathead Valley</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://northwestmontanaadventure.com/summer" target="_blank" class="card-link">Website →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Hot Springs · ~45 min from Bigfork</div>
+          <div class="card-title">Quinn's Hot Springs Resort</div>
+          <span class="badge badge-gold">Already in the itinerary</span>
+          <div class="card-desc">Natural mineral water hot springs on the Clark Fork River. Multiple pools at different temps, fine dining, and lodging. Perfect Sunday recovery after the wedding. Already listed in the Sunday options.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Plains, MT · ~45 min from Bigfork</span></div>
+            <div class="cmr"><span>~$20–25 day pass</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://www.quinnshotsprings.com/" target="_blank" class="card-link">Reserve →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Hot Springs · ~1.5 hrs from Whitefish</div>
+          <div class="card-title">Wild Horse Hot Springs</div>
+          <div class="card-desc">Two hot water wells feeding 6 private plunge pools at 95–128°F. More rustic and local than Quinn's. A true Montana hot spring experience.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Hot Springs, MT · ~1.5 hrs from Whitefish</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://wildhorsehotsprings.com/" target="_blank" class="card-link">Website →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Brewery Tour · Kalispell + Whitefish</div>
+          <div class="card-title">Big Sky Brews Cruise</div>
+          <div class="card-desc">Northwest Montana's premier brewery tour — 4-hour tours hitting 4 breweries with samples at each stop. Options include Brews &amp; Views (3 breweries), Wine/Beer/Whiskey combo, and Axes &amp; Ales (hatchet throwing + 2 breweries).</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Kalispell, Whitefish, Columbia Falls</span></div>
+            <div class="cmr"><span>~4 hrs · multiple tour options</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://www.bigskybrewscruise.com/" target="_blank" class="card-link">Book a Tour →</a>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Wine Tasting · Bigfork Village</div>
+          <div class="card-title">Flathead Lake Winery</div>
+          <div class="card-desc">Tasting room right in downtown Bigfork. Montana-made wines — a nice stop during an afternoon walk through Electric Ave. Flight of 6 wines for $12. Relaxed, no pretense.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Downtown Bigfork · walkable from VRBO</span></div>
+            <div class="cmr"><span><strong>$12</strong> — flight of 6 wines</span></div>
+         </div>
+          <div class="card-links">
+            <a href="https://flatheadlakewinery.com/" target="_blank" class="card-link">Website →</a>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- ── SHOPPING · WHITEFISH ───────────────────────────── -->
+  <div class="content-block" id="explore-shopping">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Shopping · Downtown Whitefish</div>
+      <div class="sec-title">Where to Shop on Central Ave</div>
+      <div class="sec-sub">Everything is walkable from the Whitefish Airbnb. Budget some time on Thursday afternoon or Friday morning.</div>
+   </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Western Wear + Home Decor</div>
+          <div class="card-title">Out West Trading Co.</div>
+          <span class="badge badge-gold">Best Western Shop</span>
+          <div class="card-desc">The go-to for western-style clothing, accessories, and rustic home décor in downtown Whitefish. Perfect for picking up a new hat, belt, or boots before the wedding weekend.</div>
+          <div class="card-meta"><div class="cmr"><span>Central Ave · Downtown Whitefish</span></div></div>
+          <div class="card-links"><a href="https://outwest.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Clothing + Boots + Jewelry</div>
+          <div class="card-title">S.M. Bradford Co.</div>
+          <div class="card-desc">Elegant western-flavored boutique with men's and women's clothing, fashion boots, jewelry, accessories, and home goods. More refined than a tack shop — upscale Montana style.</div>
+          <div class="card-meta"><div class="cmr"><span>Downtown Whitefish</span></div></div>
+          <div class="card-links"><a href="https://www.smbradfordco.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Women's Boutique · Contemporary</div>
+          <div class="card-title">Sappari</div>
+          <div class="card-desc">Chic women's boutique featuring emerging designers, contemporary fashion, accessories, jewelry, and handbags. Great for finding something to wear to the Montana Mingle or wedding weekend.</div>
+          <div class="card-meta"><div class="cmr"><span>Downtown Whitefish</span></div></div>
+          <div class="card-links"><a href="https://sappariwhitefish.shopsettings.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Montana-Made Goods</div>
+          <div class="card-title">The Montana Scene</div>
+          <div class="card-desc">Montana-made products, handmade soaps, locally sourced snacks, outdoor clothing, and Montana-themed merchandise. Best place for gifts to bring home.</div>
+          <div class="card-meta"><div class="cmr"><span>Downtown Whitefish</span></div></div>
+          <div class="card-links"><a href="https://www.themontanascene.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Montana Gifts + Lodge Gear</div>
+          <div class="card-title">The Mercantile at The Lodge</div>
+          <div class="card-desc">Montana-inspired gifts, lodge gear, Navajo and Southwestern jewelry, Western art, and both men's and women's clothing — fashion-forward and adventurous. Inside The Lodge at Whitefish Lake.</div>
+          <div class="card-meta"><div class="cmr"><span>The Lodge at Whitefish Lake</span></div></div>
+          <div class="card-links"><a href="https://lodgeatwhitefishlake.com/mercantile" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Artisan Gifts + Gourmet</div>
+          <div class="card-title">Trovare</div>
+          <div class="card-desc">Locally inspired gifts, handcrafted goods, gourmet treats, and artisan home décor. Great for picking up something unique that you won't find at a chain.</div>
+          <div class="card-meta"><div class="cmr"><span>Downtown Whitefish</span></div></div>
+          <div class="card-links"><a href="https://www.trovaremt.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Western Hats + Boots + Clothing</div>
+          <div class="card-title">Kemo Sabe</div>
+          <span class="badge badge-gold">Iconic Western Brand</span>
+          <div class="card-desc">The legendary western outfitter known for their hand-crafted hats, exotic skin boots, and elevated western style. A bucket-list shopping stop for anyone serious about western wear — browse online or visit a location if your route takes you through Aspen, Telluride, or Denver.</div>
+          <div class="card-meta"><div class="cmr"><span>kemosabe.com · Locations in CO &amp; beyond</span></div></div>
+          <div class="card-links"><a href="https://kemosabe.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- ── COFFEE · WHITEFISH + BIGFORK ──────────────────── -->
+  <div class="content-block" id="explore-coffee">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Coffee · Whitefish &amp; Bigfork</div>
+      <div class="sec-title">Best Coffee Stops</div>
+      <div class="sec-sub">Whether it's a slow morning before hiking or a quick shot before hitting the road, these are the spots worth stopping for.</div>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Specialty Espresso · Whitefish</div>
+          <div class="card-title">Wild Coffee Company</div>
+          <span class="badge badge-gold">Best in Whitefish</span>
+          <div class="card-desc">Modern specialty coffee shop in the heart of downtown, dedicated to sustainable sourcing and quality espresso. Great spot to grab a morning coffee before a day at Glacier.</div>
+          <div class="card-meta"><div class="cmr"><span>309 Central Ave · Downtown Whitefish</span></div></div>
+          <div class="card-links"><a href="https://wildcoffeecompanymt.com/" target="_blank" class="card-link">Website →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Organic Roastery · Whitefish</div>
+          <div class="card-title">Crema Specialty Coffee</div>
+          <div class="card-desc">Minimalist specialty roastery serving certified organic espresso with expertly roasted single-origin and blend options. A quieter, more local vibe than the downtown cafes.</div>
+          <div class="card-meta"><div class="cmr"><span>902 Wisconsin Ave · Whitefish</span></div></div>
+          <div class="card-links"><a href="https://cremaspecialtycoffee.com/" target="_blank" class="card-link">Website →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Roastery + Cafe · Whitefish</div>
+          <div class="card-title">Montana Coffee Traders</div>
+          <div class="card-desc">Montana's original specialty coffee roaster — Fair Trade, organic, sustainable. Downtown cafe location on Central Ave is perfect for a quick stop before shopping. Roastery tours on Tuesdays.</div>
+          <div class="card-meta"><div class="cmr"><span>110 Central Ave · Downtown Whitefish</span></div></div>
+          <div class="card-links"><a href="https://coffeetraders.com/" target="_blank" class="card-link">Website →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Award-Winning Roastery · Bigfork</div>
+          <div class="card-title">Fieldheads Coffee Roasting Co.</div>
+          <span class="badge badge-gold">Best in Bigfork</span>
+          <div class="card-desc">Beloved local roastery in business since 1996. Sit by the roaster, enjoy excellent coffee, and soak up the laid-back Bigfork vibe — outdoor patio open on sunny days.</div>
+          <div class="card-meta"><div class="cmr"><span>482 Osborn Ave · Bigfork</span></div></div>
+          <div class="card-links"><a href="https://fieldheadscoffee.com/" target="_blank" class="card-link">Website →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Bakery + Coffee · Bigfork</div>
+          <div class="card-title">Lake Baked</div>
+          <div class="card-desc">Artisanal bakery and coffee shop with fresh pastries, specialty huckleberry baked goods, and great coffee. Beautiful Swan River views — a perfect slow morning stop in Bigfork village.</div>
+          <div class="card-meta"><div class="cmr"><span>191 Mill St · Bigfork</span></div></div>
+          <div class="card-links"><a href="https://lake-baked.com/" target="_blank" class="card-link">Website →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BARS · WHITEFISH ───────────────────────────────── -->
+  <div class="content-block" id="explore-bars">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Bars &amp; Nightlife · Whitefish</div>
+      <div class="sec-title">Where to Drink in Whitefish</div>
+      <div class="sec-sub">Everything is within walking distance of the downtown studio. A good bar crawl: start at Thirty Eight or Bonsai, move to Blackstar, end at Remington or Great Northern.</div>
+   </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Historic Dive · Since 1908</div>
+          <div class="card-title">The Remington Bar</div>
+          <span class="badge badge-navy">Whitefish Institution</span>
+          <div class="card-desc">The oldest bar in Whitefish and the most character-filled. Lively and rowdy with a cowboy soul — live music, casino games, full bar. This is where the night gets interesting. Don't skip it.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Downtown Whitefish · walkable</span></div>
+            <div class="cmr"><span>Live music most nights</span></div>
+         </div>
+          <div class="card-links"><a href="https://remingtonbar.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Live Music Venue</div>
+          <div class="card-title">Great Northern Bar &amp; Grill</div>
+          <span class="badge badge-gold">Montana Mingle Backup</span>
+          <div class="card-desc">Classic Whitefish live music bar — pool tables, cheap drinks, no pretension, and bands most nights. This is where the Thursday bar crawl ends. Already in the itinerary.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>27 Central Ave · walkable</span></div>
+            <div class="cmr"><span>Live bands Thu–Sat most weeks</span></div>
+         </div>
+          <div class="card-links"><a href="https://greatnorthernbar.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Open-Air · Food Trucks + Live Music</div>
+          <div class="card-title">Thirty Eight Whitefish</div>
+          <div class="card-desc">Open-air venue on Central Ave with live music, rotating food trucks, and craft beverages. Great early-evening spot — more of a social scene than a late-night bar. Ideal for the group.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Central Avenue · walkable</span></div>
+            <div class="cmr"><span>Live music schedule on website</span></div>
+         </div>
+          <div class="card-links"><a href="https://thirtyeightwhitefish.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Waterfront · Live Music 2x/Week</div>
+          <div class="card-title">Boat Club Bar at The Lodge</div>
+          <div class="card-desc">Full-service bar at The Lodge at Whitefish Lake. Upbeat waterfront vibe, menu service, live music two nights a week. Good for a pre-dinner drink with a view.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>The Lodge at Whitefish Lake</span></div>
+            <div class="cmr"><span>Live music 2 nights/week</span></div>
+         </div>
+          <div class="card-links"><a href="https://lodgeatwhitefishlake.com/bar-lounge" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Craft Beer · Outdoor Patio</div>
+          <div class="card-title">Bonsai Brewery</div>
+          <div class="card-desc">Creative craft beers, tacos and bowls, open grass lawn, dogs welcome. More relaxed than a typical bar — great for a late afternoon session after a hike or shopping.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Whitefish · short walk or drive</span></div>
+            <div class="cmr"><span>Dog-friendly · family-friendly</span></div>
+         </div>
+          <div class="card-links"><a href="https://bonsaibrewery.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Craft Beer · Montana Mingle Venue</div>
+          <div class="card-title">Blackstar Brewpub</div>
+          <span class="badge badge-gold">Montana Mingle — Friday 5–8pm</span>
+          <div class="card-desc">The wedding kickoff venue. 20+ taps of Montana and regional craft beer, solid bar food, good vibe. Visit Thursday to scout it — you'll be back Friday for the Mingle.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Downtown Whitefish · walkable</span></div>
+            <div class="cmr"><span>20+ taps · local craft focus</span></div>
+         </div>
+          <div class="card-links"><a href="https://www.blackstarmt.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- ── DINNER · WHITEFISH ─────────────────────────────── -->
+  <div class="content-block" id="explore-dinner-whitefish">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Dinner · Whitefish</div>
+      <div class="sec-title">Where to Eat Dinner in Whitefish</div>
+   </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Fine Dining · James Beard-Nominated</div>
+          <div class="card-title">Herb &amp; Omni</div>
+          <span class="badge badge-gold">Best in Town</span>
+          <div class="card-desc">The most ambitious kitchen in Whitefish — Chef Earl James (James Beard nominee) cooking seasonal, locally-sourced cuisine. Also has The Belvedere rooftop bar with garden-inspired cocktails. Reserve well ahead.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Downtown Whitefish</span></div>
+            <div class="cmr"><span>$$$ · Reserve 2–3 weeks ahead</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;"><strong>Reserve now.</strong> This fills up weeks in advance in September.</div>
+          <div class="card-links"><a href="https://www.herbandomni.com/" target="_blank" class="card-link">Reserve →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Creole + Montana · Live Music</div>
+          <div class="card-title">Tupelo Grille</div>
+          <span class="badge badge-navy">Already in Itinerary</span>
+          <div class="card-desc">Montana meets Louisiana — bison, local trout, the largest bourbon selection in Whitefish, and live music most nights. Consistently great. Already in the Thursday plan.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>17 Central Ave · walkable</span></div>
+            <div class="cmr"><span>~$35–55/person</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;">Reserve 2–4 weeks ahead in summer/early fall.</div>
+          <div class="card-links"><a href="https://www.tupelogrille.com/" target="_blank" class="card-link">Reserve →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Steakhouse · Lake Views</div>
+          <div class="card-title">Whitefish Lake Restaurant</div>
+          <div class="card-desc">Classic Montana steakhouse in a beautiful log building at the Whitefish Lake Golf Course. Incredible wine list, roasted everything, baked potatoes the size of your forearm. Special occasion feel.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Whitefish Lake Golf Course</span></div>
+            <div class="cmr"><span>$$$ · Steak-focused</span></div>
+         </div>
+          <div class="card-links"><a href="https://www.whitefishlakerestaurant.com/" target="_blank" class="card-link">Reserve →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Pizza + Wine · Casual</div>
+          <div class="card-title">Mama EV's</div>
+          <div class="card-desc">Oven-baked pizza and the best salads in Whitefish — plus a fun wine list. Located at the Chalet Hotel on Hwy 93, just south of downtown. Perfect post-hike meal when you're too tired for a sit-down dinner.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Chalet Hotel · Hwy 93, just south of downtown</span></div>
+            <div class="cmr"><span>~$18–28/person</span></div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- ── DINING · BIGFORK ───────────────────────────────── -->
+  <div class="content-block" id="explore-dining-bigfork">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Dining + Drinks · Bigfork</div>
+      <div class="sec-title">Eating &amp; Drinking in Bigfork Village</div>
+   </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">New American · Fine-ish Dining</div>
+          <div class="card-title">Showthyme Act II</div>
+          <span class="badge badge-gold">Best in Bigfork</span>
+          <div class="card-desc">Casual-chic New American restaurant near the Summer Playhouse on Electric Ave. Great desserts, full bar, refined but not stuffy. Perfect for the Sunday farewell dinner.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>548 Electric Ave · 12 min walk from VRBO</span></div>
+            <div class="cmr"><span>Tue–Sat 5–9pm · Sun 5–8pm</span></div>
+            <div class="cmr"><span>$$</span></div>
+         </div>
+          <div class="warn-box" style="margin-top:.85rem;">Reserve ahead for a group of 6+.</div>
+          <div class="card-links"><a href="https://www.showthymeactii.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Craft Beer + Food · Flathead Lake Views</div>
+          <div class="card-title">Flathead Lake Brewing Co.</div>
+          <span class="badge badge-navy">Views + Beer</span>
+          <div class="card-desc">Breathtaking Flathead Lake views with 16 taps, excellent wine, beer cocktails, and American food. One of the most scenic places to have a drink in Montana. Great post-brunch Sunday spot.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Bigfork · Flathead Lake waterfront</span></div>
+            <div class="cmr"><span>16 taps · wine + cocktails</span></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Wine Tasting · Downtown</div>
+          <div class="card-title">Flathead Lake Winery</div>
+          <div class="card-desc">Montana-made wines tasted right in downtown Bigfork. A $12 flight of 6 wines — affordable, local, and a fun 45-minute stop on an afternoon village walk.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Downtown Bigfork · walkable from VRBO</span></div>
+            <div class="cmr"><span><strong>$12</strong> — flight of 6 wines</span></div>
+         </div>
+          <div class="card-links"><a href="https://flatheadlakewinery.com/" target="_blank" class="card-link">Website →</a></div>
+       </div>
+     </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Breakfast + Lunch</div>
+          <div class="card-title">Echo Lake Café</div>
+          <div class="card-desc">Famous for large portions of homemade, high-quality food. A Bigfork institution for breakfast and lunch. Good Sunday morning option before the wedding brunch if anyone's up early.</div>
+          <div class="card-meta">
+            <div class="cmr"><span>Bigfork area</span></div>
+            <div class="cmr"><span>Breakfast + lunch only</span></div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+</div>
+</div><!-- /tab-explore -->
+
+<!-- ═══════════════════════════════════════════════════
+     TAB 4 — FULL ITINERARY
+═══════════════════════════════════════════════════ -->
+<div id="tab-full" class="tab-panel">
+<div class="content-wrap">
+
+  <div class="stats-strip">
+    <div><div class="stat-num">16<span></span></div><div class="stat-label">Crew Members</div></div>
+    <div><div class="stat-num">5<span> days</span></div><div class="stat-label">Sep 2–7</div></div>
+    <div><div class="stat-num">3<span></span></div><div class="stat-label">Properties</div></div>
+    <div><div class="stat-num">1<span></span></div><div class="stat-label">Wedding</div></div>
+ </div>
+
+  <div class="content-block">
+    <div class="sec-header">
+      <div class="sec-eyebrow">September 2–7, 2026</div>
+      <div class="sec-title">Complete Day-by-Day</div>
+   </div>
+
+    <div class="itinerary">
+
+      <div class="day-block open" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num" style="font-size:1.1rem;">Sep 2</div>
+            <div><div class="day-ttl">Arrival → Whitefish</div><div class="day-dt">Wednesday · Jackie &amp; Vale land · Check into Downtown Studio</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Jackie Urteaga — Newark (EWR) → Kalispell (FCA)</div>
+          <div class="tl-items" style="margin-bottom:1.1rem;">
+            <div class="tl-item"><div class="tl-time">6:00 AM</div><div class="tl-content"><div class="tl-title">United UA530 departs Newark (EWR)</div><div class="tl-desc">EWR → ORD → FCA · 1 stop · 6h 28m · Confirmation: JJ2783</div></div></div>
+            <div class="tl-item"><div class="tl-time">11:27 AM</div><div class="tl-content"><div class="tl-title">Lands at Kalispell (FCA) — Glacier Park International</div><div class="tl-desc">Pick up rental car. ~15 min drive to downtown Whitefish.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div class="tl-content"><div class="tl-title">Check in — Charming Downtown Whitefish Studio</div><div class="tl-desc">Self check-in with keypad. Drop bags, find the coffee maker. You're in Montana.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div class="tl-content"><div class="tl-title">First dinner + explore Whitefish</div><div class="tl-desc">Easy night — big hike tomorrow. Scope out Blackstar Brewpub.</div></div></div>
+          </div>
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Vale Giraldo — Flight TBD</div>
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">TBD</div><div class="tl-content"><div class="tl-title">Vale Giraldo — flight not yet purchased</div><div class="tl-desc">Closest airport: Kalispell (FCA) · ~15 min to Whitefish. Details will be added once booked.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num" style="font-size:1.1rem;">Sep 3</div>
+            <div><div class="day-ttl">Glacier NP (G1) + Group 2 Flies into Missoula</div><div class="day-dt">Thursday · Two groups, two cities</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Group 1 — Jackie &amp; Vale · Whitefish</div>
+          <div class="tl-items" style="margin-bottom:1.1rem;">
+            <div class="tl-item"><div class="tl-time">7:00 AM</div><div class="tl-content"><div class="tl-title">Early breakfast + depart for Glacier</div><div class="tl-desc">~1 hr 15 min to Logan Pass. Leave early for parking.</div></div></div>
+            <div class="tl-item"><div class="tl-time">9:30 AM</div><div class="tl-content"><div class="tl-title">Highline Trail or Hidden Lake Overlook</div><div class="tl-desc">Highline (5–7 hrs) or Hidden Lake (2–3 hrs). Both start at Logan Pass.</div></div></div>
+            <div class="tl-item"><div class="tl-time">4:00 PM</div><div class="tl-content"><div class="tl-title">Drive back to Whitefish · Clean up</div></div></div>
+            <div class="tl-item"><div class="tl-time">6:30 PM</div><div class="tl-content"><div class="tl-title">Dinner — Tupelo Grille or Pescado Negro</div></div></div>
+            <div class="tl-item"><div class="tl-time">8:30 PM</div><div class="tl-content"><div class="tl-title">Bars — Blackstar → Great Northern</div></div></div>
+         </div>
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Group 2 — Genesis, Peca, Maria, Mikey, Sofia, Manuela · Missoula → Bigfork</div>
+          <div class="tl-items" style="margin-bottom:1.1rem;">
+            <div class="tl-item"><div class="tl-time">12:33 PM</div><div class="tl-content"><div class="tl-title">DL4112 lands at Missoula (MSO)</div><div class="tl-desc">Nashville via SLC. Grab bags, pick up rental cars.</div></div></div>
+            <div class="tl-item"><div class="tl-time">~1:00 PM</div><div class="tl-content"><div class="tl-title">Drive to Bigfork (~1 hr 15 min)</div><div class="tl-desc">Stop at Albertsons in Kalispell to stock the Airbnb.</div></div></div>
+            <div class="tl-item"><div class="tl-time">~2:30 PM</div><div class="tl-content"><div class="tl-title">Check into Bigfork Airbnb (Condo w/ Fireplace)</div><div class="tl-desc">Self check-in via smartlock. Pool, patio, fireplace — enjoy it.</div></div></div>
+            <div class="tl-item"><div class="tl-time">TBD</div><div class="tl-content"><div class="tl-title">Michael Thoennes + Ty Humphrey — flights TBD</div><div class="tl-desc">Arrival TBD once flights are booked.</div></div></div>
+          </div>
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Sam + Zeb — Kalispell (FCA) → Bigfork</div>
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">3:53 PM</div><div class="tl-content"><div class="tl-title">UA2246 lands at Kalispell (FCA)</div><div class="tl-desc">Samantha + Zeb fly in from Denver. Pick up rental car.</div></div></div>
+            <div class="tl-item"><div class="tl-time">~4:30 PM</div><div class="tl-content"><div class="tl-title">Arrive at 537 Electric Ave, Bigfork</div><div class="tl-desc">Check in to their own Airbnb in downtown Bigfork. ~32 min from FCA.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num" style="font-size:1.1rem;">Sep 4</div>
+            <div><div class="day-ttl">Group 2 Glacier + Montana Mingle (All) + Group 1 Checks into Bigfork</div><div class="day-dt">Friday · Montana Mingle 5–8 PM at Blackstar Brewpub</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Group 2 — Genesis, Peca, Maria, Mikey, Michael, Ty, Sofia, Manuela · Bigfork → Glacier → Bigfork</div>
+          <div class="tl-items" style="margin-bottom:1.1rem;">
+            <div class="tl-item"><div class="tl-time">5:00 AM</div><div class="tl-content"><div class="tl-title">Depart VRBO for Glacier National Park</div><div class="tl-desc">~1 hr 45 min drive to Logan Pass. Fuel up in Kalispell.</div></div></div>
+            <div class="tl-item"><div class="tl-time">6:45 AM</div><div class="tl-content"><div class="tl-title">Arrive Logan Pass — Hidden Lake Overlook</div><div class="tl-desc">2.7 mi RT, 2–3 hrs. Mountain goats, alpine lake, stunning views.</div></div></div>
+            <div class="tl-item"><div class="tl-time">12:00 PM</div><div class="tl-content"><div class="tl-title">Wrapped up — drive back to Bigfork (~1 hr 45 min)</div></div></div>
+            <div class="tl-item"><div class="tl-time">~1:45 PM</div><div class="tl-content"><div class="tl-title">Back at VRBO — shower, change, rest</div></div></div>
+          </div>
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Group 1 — Jackie, Ashley, Vale, Carlos, Gaby, Danny · Whitefish</div>
+          <div class="tl-items" style="margin-bottom:1.1rem;">
+            <div class="tl-item"><div class="tl-time">Morning</div><div class="tl-content"><div class="tl-title">Free morning — TBD</div><div class="tl-desc">Plans TBD. Check out of the Whitefish studio by 11 AM. Bags in the car.</div></div></div>
+            <div class="tl-item"><div class="tl-time">Afternoon</div><div class="tl-content"><div class="tl-title">Free time in Whitefish</div><div class="tl-desc">City beach, shopping, bike rental. Last hours before the Mingle.</div></div></div>
+          </div>
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--msky);font-weight:500;margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,168,152,.2);">Everyone — Montana Mingle + Bigfork Check-in</div>
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">4:00 PM</div><div class="tl-content"><div class="tl-title">Group 2 departs Bigfork for Whitefish (~45 min)</div></div></div>
+            <div class="tl-item"><div class="tl-time">5:00 PM</div><div class="tl-content"><div class="tl-title">Montana Mingle — Blackstar Brewpub · 5–8 PM</div><div class="tl-desc">Brooke &amp; Dan's wedding kickoff. Both groups together for the first time. Smart casual.</div></div></div>
+            <div class="tl-item"><div class="tl-time">8:15 PM</div><div class="tl-content"><div class="tl-title">Group 1 drives to Bigfork (~45 min) · Check in to VRBO</div><div class="tl-desc">Full crew together. Claim your rooms.</div></div></div>
+          </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num" style="font-size:1.1rem;">Sep 5</div>
+            <div><div class="day-ttl">Wedding Day — Brooke &amp; Dan</div><div class="day-dt">Saturday · Ceremony 1pm · Cocktails 3pm · Reception 5pm</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">10:00 AM</div><div class="tl-content"><div class="tl-title">Get ready at the VRBO</div></div></div>
+            <div class="tl-item"><div class="tl-time">12:00 PM</div><div class="tl-content"><div class="tl-title">Leave for Whitefish (~45 min)</div></div></div>
+            <div class="tl-item"><div class="tl-time">1:00 PM</div><div class="tl-content"><div class="tl-title">Ceremony — St. John Paul II Catholic Church, Whitefish</div></div></div>
+            <div class="tl-item"><div class="tl-time">3:00 PM</div><div class="tl-content"><div class="tl-title">Cocktail Hour — The Venue at Montana 45, Bigfork</div></div></div>
+            <div class="tl-item"><div class="tl-time">5:00 PM</div><div class="tl-content"><div class="tl-title">Reception — The Venue at Montana 45</div></div></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num" style="font-size:1.1rem;">Sep 6</div>
+            <div><div class="day-ttl">Farewell Brunch + Montana Sunday</div><div class="day-dt">Sunday · Brunch 10:30am–noon · Afternoon adventures</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">10:30 AM</div><div class="tl-content"><div class="tl-title">Wedding Brunch — The Venue at Montana 45 (10:30–12:00)</div></div></div>
+            <div class="tl-item"><div class="tl-time">12:30 PM</div><div class="tl-content"><div class="tl-title">Afternoon — Flathead Lake, Quinn's Hot Springs, or Bigfork village</div></div></div>
+            <div class="tl-item"><div class="tl-time">~12:30 PM</div><div class="tl-content"><div class="tl-title">Samantha + Zeb head to Kalispell Airport (FCA)</div><div class="tl-desc">UA1199 FCA → DEN · Departs 2:29 PM · Arrives Denver 4:40 PM</div></div></div>
+            <div class="tl-item"><div class="tl-time">6:30 PM</div><div class="tl-content"><div class="tl-title">Final dinner — Bigfork Inn (reserve ahead)</div></div></div>
+            <div class="tl-item"><div class="tl-time">Evening</div><div class="tl-content"><div class="tl-title">Last night on the Flathead Lake deck · Pack bags</div></div></div>
+         </div>
+       </div>
+     </div>
+
+      <div class="day-block" onclick="toggleDay(this)">
+        <div class="day-header">
+          <div class="dh-left">
+            <div class="day-num" style="font-size:1.1rem;">Sep 7</div>
+            <div><div class="day-ttl">Departures — Safe Travels Everyone</div><div class="day-dt">Monday · Checkout · Flights home</div></div>
+         </div>
+          <svg class="day-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </div>
+        <div class="day-body">
+          <div class="tl-items">
+            <div class="tl-item"><div class="tl-time">By 10 AM</div><div class="tl-content"><div class="tl-title">Checkout both Bigfork properties</div><div class="tl-desc">Confirm checkout time with each host. Pack bags the night before.</div></div></div>
+            <div class="tl-item"><div class="tl-time">9:30 AM</div><div class="tl-content"><div class="tl-title">Jackie leaves for FCA (Kalispell · 32 min)</div><div class="tl-desc">United UA1989 · FCA → ORD → EWR · Departs 12:33 PM · Arrives Newark 9:32 PM · Conf: JJ2783</div></div></div>
+            <div class="tl-item"><div class="tl-time">TBD</div><div class="tl-content"><div class="tl-title">Vale, Ashley, Carlos, Gaby, Danny — flights TBD</div><div class="tl-desc">Details to be added. FCA is 32 min from Bigfork · MSO is ~1 hr 15 min.</div></div></div>
+            <div class="tl-item"><div class="tl-time">TBD</div><div class="tl-content"><div class="tl-title">Group 2 return flights — TBD</div><div class="tl-desc">Genesis, Peca, Maria, Mikey, Sofia, Manuela — likely out of MSO. Details coming.</div></div></div>
+            <div class="tl-item"><div class="tl-time">TBD</div><div class="tl-content"><div class="tl-title">Michael Thoennes + Ty Humphrey — not yet booked</div></div></div>
+            <div class="tl-item"><div class="tl-time">Sep 6</div><div class="tl-content"><div class="tl-title">Samantha + Zeb departed yesterday</div><div class="tl-desc">UA1199 FCA → DEN · Departed 2:29 PM Sunday Sep 6</div></div></div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+  <!-- Join -->
+  <div class="join-block" id="join">
+    <h3>Want in on the next trip?</h3>
+    <p>A Cowgirl Summer keeps rolling. Drop your email to stay in the loop on future gatherings, rides, and adventures.</p>
+    <div class="join-form">
+      <input type="email" placeholder="your@email.com" class="join-input" />
+      <button class="join-btn">Stay in Touch →</button>
+   </div>
+ </div>
+
+</div>
+</div><!-- /tab-full -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer>
+  <div class="ft-logo">A Cowgirl Summer</div>
+  <div class="ft-tag">Montana · September 2–7, 2026 · Whitefish &amp; Bigfork</div>
+  <div class="ft-links">
+    <a href="#">Instagram</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+ </div>
+  <div class="ft-copy">© 2026 A Cowgirl Summer. Made with love for Brooke &amp; Dan's big day.</div>
+</footer>
+
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    document.querySelector('.tab-nav-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function toggleDay(block) {
+    block.classList.toggle('open');
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+.DS_Store
+.claude/
+CLAUDE.md
+temporary screenshots/
+node_modules/
+*.log
